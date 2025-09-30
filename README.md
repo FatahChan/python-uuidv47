@@ -1,6 +1,6 @@
 # python-uuidv47
 
-[![CI](https://github.com/yourusername/python-uuidv47/workflows/CI/badge.svg)](https://github.com/yourusername/python-uuidv47/actions)
+[![CI](https://github.com/FatahChan/python-uuidv47/workflows/CI/badge.svg)](https://github.com/FatahChan/python-uuidv47/actions)
 [![PyPI version](https://badge.fury.io/py/python-uuidv47.svg)](https://badge.fury.io/py/python-uuidv47)
 [![Python versions](https://img.shields.io/pypi/pyversions/python-uuidv47.svg)](https://pypi.org/project/python-uuidv47/)
 
@@ -48,7 +48,7 @@ pip install python-uuidv47
 ### From Source
 
 ```bash
-git clone https://github.com/yourusername/python-uuidv47.git
+git clone https://github.com/FatahChan/python-uuidv47.git
 cd python-uuidv47
 pip install .
 ```
@@ -207,7 +207,7 @@ except ValueError as e:
 ### Building from Source
 
 ```bash
-git clone https://github.com/yourusername/python-uuidv47.git
+git clone https://github.com/FatahChan/python-uuidv47.git
 cd python-uuidv47
 
 # Install development dependencies
