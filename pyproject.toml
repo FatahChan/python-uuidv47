@@ -10,7 +10,7 @@ build-backend = "setuptools.build_meta"
 name = "python-uuidv47"
 version = "1.0.0"
 description = "High-performance UUIDv47 operations - encoding UUIDv7 into UUIDv4 facades"
-authors = [{name = "Python UUIDv47 Contributors", email = "contributors@python-uuidv47.org"}]
+authors = [{name = "Fatah Chan", email = "ahmadfathallah89@gmail.com"}]
 license = {text = "MIT"}
 readme = "README.md"
 requires-python = ">=3.9"
@@ -45,9 +45,9 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/yourusername/python-uuidv47"
-Repository = "https://github.com/yourusername/python-uuidv47.git"
-Issues = "https://github.com/yourusername/python-uuidv47/issues"
+Homepage = "https://github.com/FatahChan/python-uuidv47"
+Repository = "https://github.com/FatahChan/python-uuidv47.git"
+Issues = "https://github.com/FatahChan/python-uuidv47/issues"
 
 [tool.setuptools.packages.find]
 where = ["."]
