@@ -1,0 +1,30 @@
+include README.md
+include LICENSE
+include CHANGELOG.md
+include pyproject.toml
+include setup.py
+include MANIFEST.in
+
+# Source files
+recursive-include src *.h *.c *.py
+recursive-include python_uuidv47 *.py *.pyx *.pxd *.pyi
+recursive-include build_tools *.py
+
+# Tests
+recursive-include tests *.py
+
+# Documentation
+recursive-include docs *.md *.rst
+
+# CI/CD
+recursive-include .github *.yml *.yaml
+
+# Exclude compiled files and caches
+global-exclude *.pyc
+global-exclude *.pyo
+global-exclude *.so
+global-exclude *.dll
+global-exclude *.dylib
+global-exclude __pycache__
+global-exclude .pytest_cache
+global-exclude *.egg-info
