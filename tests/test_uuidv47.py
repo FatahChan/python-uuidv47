@@ -18,36 +18,36 @@ class TestUUIDv47:
         # We test the functionality rather than initial state
 
         # Set keys and verify
-        assert set_keys(123, 456) == 1  # True
-        assert has_keys() == 1  # True
+        assert set_keys(123, 456) is True
+        assert has_keys() is True
 
         # Test with large keys (64-bit max)
         max_key = 2**64 - 1
-        assert set_keys(max_key, max_key) == 1  # True
-        assert has_keys() == 1  # True
+        assert set_keys(max_key, max_key) is True
+        assert has_keys() is True
 
         # Test with zero keys
-        assert set_keys(0, 0) == 1  # True
-        assert has_keys() == 1  # True
+        assert set_keys(0, 0) is True
+        assert has_keys() is True
 
     def test_uuid_parsing(self):
         """Test UUID format validation"""
         # Valid UUIDs
         valid_uuid = str(uuid4())
-        assert uuid_parse(valid_uuid) == 1  # True
+        assert uuid_parse(valid_uuid) is True
 
         # Standard UUID formats
-        assert uuid_parse("12345678-1234-1234-1234-123456789abc") == 1  # True
-        assert uuid_parse("550e8400-e29b-41d4-a716-446655440000") == 1  # True
-        assert uuid_parse("6ba7b810-9dad-11d1-80b4-00c04fd430c8") == 1  # True
+        assert uuid_parse("12345678-1234-1234-1234-123456789abc") is True
+        assert uuid_parse("550e8400-e29b-41d4-a716-446655440000") is True
+        assert uuid_parse("6ba7b810-9dad-11d1-80b4-00c04fd430c8") is True
 
         # Invalid UUIDs
-        assert uuid_parse("invalid-uuid") == 0  # False
-        assert uuid_parse("") == 0  # False
-        assert uuid_parse("12345678-1234-1234-1234-12345678") == 0  # False (too short)
+        assert uuid_parse("invalid-uuid") is False
+        assert uuid_parse("") is False
+        assert uuid_parse("12345678-1234-1234-1234-12345678") is False  # (too short)
         assert (
-            uuid_parse("12345678-1234-1234-1234-123456789abg") == 0
-        )  # False (invalid hex)
+            uuid_parse("12345678-1234-1234-1234-123456789abg") is False
+        )  # (invalid hex)
 
         # Note: The C implementation accepts some variations:
         # - Underscores instead of dashes (implementation detail)
@@ -71,7 +71,7 @@ class TestUUIDv47:
             assert decoded == original, f"Roundtrip failed for {original}"
 
             # Facade should look like valid UUID
-            assert uuid_parse(facade) == 1  # True
+            assert uuid_parse(facade) is True
 
             # Facade should be different from original (unless keys are zero)
             if not (123456789 == 0 and 987654321 == 0):
@@ -129,7 +129,7 @@ class TestUUIDv47:
             # Facade should be valid UUID format
             assert len(facade) == 36
             assert facade.count("-") == 4
-            assert uuid_parse(facade) == 1  # True
+            assert uuid_parse(facade) is True
 
             # Should be parseable by standard UUID library
             try:
@@ -148,7 +148,7 @@ class TestUUIDv47:
         decoded = decode(facade)
 
         assert decoded == test_uuid
-        assert uuid_parse(facade) == 1  # True
+        assert uuid_parse(facade) is True
 
     def test_zero_keys(self):
         """Test behavior with zero keys"""
@@ -160,7 +160,7 @@ class TestUUIDv47:
 
         # Should still work (zero is a valid key)
         assert decoded == test_uuid
-        assert uuid_parse(facade) == 1  # True
+        assert uuid_parse(facade) is True
 
     def test_version_preservation_in_random_bits(self):
         """Test that random bits are preserved correctly"""

@@ -139,7 +139,7 @@ class TestErrorHandling:
             uuid_parse(123)
 
         # None returns False instead of raising an error (implementation detail)
-        assert uuid_parse(None) == 0  # False
+        assert uuid_parse(None) is False
 
         with pytest.raises((TypeError, AttributeError)):
             uuid_parse(b"550e8400-e29b-41d4-a716-446655440000")
@@ -166,7 +166,7 @@ class TestErrorHandling:
         """Test that errors don't corrupt internal state"""
         # Set initial state
         set_keys(123, 456)
-        assert has_keys() == 1  # True
+        assert has_keys() is True
 
         # Cause various errors
         with pytest.raises(ValueError):
@@ -176,7 +176,7 @@ class TestErrorHandling:
             decode("invalid-facade")
 
         # State should remain consistent
-        assert has_keys() == 1  # True
+        assert has_keys() is True
 
         # Normal operations should still work
         test_uuid = "550e8400-e29b-71d4-a716-446655440000"
@@ -211,7 +211,7 @@ class TestErrorHandling:
             decode("")
 
         # uuid_parse should return False for empty strings
-        assert uuid_parse("") == 0  # False
+        assert uuid_parse("") is False
 
     def test_whitespace_handling(self):
         """Test handling of whitespace in UUID strings"""

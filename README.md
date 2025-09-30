@@ -201,7 +201,7 @@ except ValueError as e:
 ### Requirements
 
 - Python 3.9+
-- Cython 0.29.32+
+- Cython 3.0+
 - C11 compatible compiler
 
 ### Building from Source

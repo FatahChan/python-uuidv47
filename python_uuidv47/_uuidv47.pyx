@@ -5,6 +5,7 @@
 
 from libc.stdint cimport uint8_t, uint64_t
 from libc.string cimport memcpy
+from libcpp cimport bool
 
 
 # C declarations from uuidv47.h
@@ -18,14 +19,14 @@ cdef extern from "uuidv47.h":
     # Core functions
     uuid128_t uuidv47_encode_v4facade(uuid128_t v7, uuidv47_key_t key) nogil
     uuid128_t uuidv47_decode_v4facade(uuid128_t facade, uuidv47_key_t key) nogil
-    bool_t uuid_parse(const char* s, uuid128_t* out) nogil
+    bool uuid_parse(const char* s, uuid128_t* out) nogil
     void uuid_format(const uuid128_t* u, char out[37]) nogil
 
 # Global state (same pattern as Node.js)
 cdef uuidv47_key_t _global_key = uuidv47_key_t(k0=0, k1=0)
-cdef bool_t _key_set = False
+cdef bool _key_set = False
 
-cpdef bool_t set_keys(uint64_t k0, uint64_t k1):
+cpdef bool set_keys(uint64_t k0, uint64_t k1):
     """Set global encryption keys for encoding/decoding operations.
     
     Args:
@@ -44,7 +45,7 @@ cpdef bool_t set_keys(uint64_t k0, uint64_t k1):
     _key_set = True
     return True
 
-cpdef bool_t has_keys():
+cpdef bool has_keys():
     """Check if global encryption keys have been set.
     
     Returns:
@@ -114,7 +115,7 @@ cpdef str decode(str facade_str):
     
     return v7_str[:36].decode('ascii')
 
-cpdef bool_t uuid_parse_py(str uuid_str):
+cpdef bool uuid_parse_py(str uuid_str):
     """Validate if a string is a properly formatted UUID.
     
     Args:
@@ -129,7 +130,7 @@ cpdef bool_t uuid_parse_py(str uuid_str):
     cdef bytes uuid_bytes = uuid_str.encode('ascii')
     cdef const char* uuid_cstr = uuid_bytes
     cdef uuid128_t uuid
-    cdef bool_t result
+    cdef bool result
     
     with nogil:
         result = uuid_parse(uuid_cstr, &uuid)

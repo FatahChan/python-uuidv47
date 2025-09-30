@@ -1528,15 +1528,6 @@ static const char* const __pyx_f[] = {
 #endif
 
 /* #### Code section: numeric_typedefs ### */
-
-/* "python_uuidv47/_uuidv47.pxd":6
- * 
- * # Use int instead of bool for compatibility
- * ctypedef int bool_t             # <<<<<<<<<<<<<<
- * 
- * # C struct declarations from uuidv47.h
-*/
-typedef int __pyx_t_14python_uuidv47_8_uuidv47_bool_t;
 /* #### Code section: complex_type_declarations ### */
 /* #### Code section: type_declarations ### */
 
@@ -2079,6 +2070,23 @@ static void __Pyx_AddTraceback(const char *funcname, int c_line,
 /* CIntFromPy.proto */
 static CYTHON_INLINE uint64_t __Pyx_PyLong_As_uint64_t(PyObject *);
 
+/* FormatTypeName.proto */
+#if CYTHON_COMPILING_IN_LIMITED_API
+typedef PyObject *__Pyx_TypeName;
+#define __Pyx_FMT_TYPENAME "%U"
+#define __Pyx_DECREF_TypeName(obj) Py_XDECREF(obj)
+#if __PYX_LIMITED_VERSION_HEX >= 0x030d0000
+#define __Pyx_PyType_GetFullyQualifiedName PyType_GetFullyQualifiedName
+#else
+static __Pyx_TypeName __Pyx_PyType_GetFullyQualifiedName(PyTypeObject* tp);
+#endif
+#else  // !LIMITED_API
+typedef const char *__Pyx_TypeName;
+#define __Pyx_FMT_TYPENAME "%.200s"
+#define __Pyx_PyType_GetFullyQualifiedName(tp) ((tp)->tp_name)
+#define __Pyx_DECREF_TypeName(obj)
+#endif
+
 /* PyObjectVectorCallKwBuilder.proto */
 CYTHON_UNUSED static int __Pyx_VectorcallBuilder_AddArg_Check(PyObject *key, PyObject *value, PyObject *builder, PyObject **args, int n);
 #if CYTHON_VECTORCALL
@@ -2095,26 +2103,6 @@ static int __Pyx_VectorcallBuilder_AddArgStr(const char *key, PyObject *value, P
 #define __Pyx_MakeVectorcallBuilderKwds(n) __Pyx_PyDict_NewPresized(n)
 #define __Pyx_VectorcallBuilder_AddArg(key, value, builder, args, n) PyDict_SetItem(builder, key, value)
 #define __Pyx_VectorcallBuilder_AddArgStr(key, value, builder, args, n) PyDict_SetItemString(builder, key, value)
-#endif
-
-/* CIntToPy.proto */
-static CYTHON_INLINE PyObject* __Pyx_PyLong_From_int(int value);
-
-/* FormatTypeName.proto */
-#if CYTHON_COMPILING_IN_LIMITED_API
-typedef PyObject *__Pyx_TypeName;
-#define __Pyx_FMT_TYPENAME "%U"
-#define __Pyx_DECREF_TypeName(obj) Py_XDECREF(obj)
-#if __PYX_LIMITED_VERSION_HEX >= 0x030d0000
-#define __Pyx_PyType_GetFullyQualifiedName PyType_GetFullyQualifiedName
-#else
-static __Pyx_TypeName __Pyx_PyType_GetFullyQualifiedName(PyTypeObject* tp);
-#endif
-#else  // !LIMITED_API
-typedef const char *__Pyx_TypeName;
-#define __Pyx_FMT_TYPENAME "%.200s"
-#define __Pyx_PyType_GetFullyQualifiedName(tp) ((tp)->tp_name)
-#define __Pyx_DECREF_TypeName(obj)
 #endif
 
 /* CIntToPy.proto */
@@ -2209,16 +2197,18 @@ static int __Pyx_State_RemoveModule(void*);
 
 /* Module declarations from "libc.stdint" */
 
+/* Module declarations from "libcpp" */
+
 /* Module declarations from "libc.string" */
 
 /* Module declarations from "python_uuidv47._uuidv47" */
 static uuidv47_key_t __pyx_v_14python_uuidv47_8_uuidv47__global_key;
-static __pyx_t_14python_uuidv47_8_uuidv47_bool_t __pyx_v_14python_uuidv47_8_uuidv47__key_set;
-static __pyx_t_14python_uuidv47_8_uuidv47_bool_t __pyx_f_14python_uuidv47_8_uuidv47_set_keys(uint64_t, uint64_t, int __pyx_skip_dispatch); /*proto*/
+static bool __pyx_v_14python_uuidv47_8_uuidv47__key_set;
+static bool __pyx_f_14python_uuidv47_8_uuidv47_set_keys(uint64_t, uint64_t, int __pyx_skip_dispatch); /*proto*/
 static PyObject *__pyx_f_14python_uuidv47_8_uuidv47_encode(PyObject *, int __pyx_skip_dispatch); /*proto*/
 static PyObject *__pyx_f_14python_uuidv47_8_uuidv47_decode(PyObject *, int __pyx_skip_dispatch); /*proto*/
-static __pyx_t_14python_uuidv47_8_uuidv47_bool_t __pyx_f_14python_uuidv47_8_uuidv47_has_keys(int __pyx_skip_dispatch); /*proto*/
-static __pyx_t_14python_uuidv47_8_uuidv47_bool_t __pyx_f_14python_uuidv47_8_uuidv47_uuid_parse_py(PyObject *, int __pyx_skip_dispatch); /*proto*/
+static bool __pyx_f_14python_uuidv47_8_uuidv47_has_keys(int __pyx_skip_dispatch); /*proto*/
+static bool __pyx_f_14python_uuidv47_8_uuidv47_uuid_parse_py(PyObject *, int __pyx_skip_dispatch); /*proto*/
 /* #### Code section: typeinfo ### */
 /* #### Code section: before_global_var ### */
 #define __Pyx_MODULE_NAME "python_uuidv47._uuidv47"
@@ -2233,7 +2223,7 @@ static PyObject *__pyx_builtin_ValueError;
 static const char __pyx_k_[] = "?";
 static const char __pyx_k_k0[] = "k0";
 static const char __pyx_k_k1[] = "k1";
-static const char __pyx_k_Q_1[] = "\320\000\025\220Q\360\014\000\005\014\2101";
+static const char __pyx_k_1_1[] = "\320\000\023\2201\360\014\000\005\014\2101";
 static const char __pyx_k_pop[] = "pop";
 static const char __pyx_k_func[] = "__func__";
 static const char __pyx_k_main[] = "__main__";
@@ -2250,11 +2240,11 @@ static const char __pyx_k_set_name[] = "__set_name__";
 static const char __pyx_k_uuid_str[] = "uuid_str";
 static const char __pyx_k_ValueError[] = "ValueError";
 static const char __pyx_k_facade_str[] = "facade_str";
-static const char __pyx_k_Q_vQ_vQ_q_1[] = "\320\000\025\220Q\360\032\000\005\006\330\004\017\210v\220Q\330\004\017\210v\220Q\330\004\017\210q\330\004\013\2101";
+static const char __pyx_k_1_vQ_vQ_q_1[] = "\320\000\023\2201\360\032\000\005\006\330\004\017\210v\220Q\330\004\017\210v\220Q\330\004\017\210q\330\004\013\2101";
 static const char __pyx_k_RuntimeError[] = "RuntimeError";
 static const char __pyx_k_is_coroutine[] = "_is_coroutine";
 static const char __pyx_k_uuid_parse_py[] = "uuid_parse_py";
-static const char __pyx_k_t1_q_HG1A_1Kq_1[] = "\320\000\032\230!\360\022\000\005\010\200t\2101\330\010\017\210q\340\004\034\230H\240G\2501\250A\330\004!\240\021\360\010\000\n\013\330\010\021\220\032\2301\230K\240q\250\001\340\004\013\2101";
+static const char __pyx_k_t1_q_HG1A_1Kq_1[] = "\320\000\030\230\001\360\022\000\005\010\200t\2101\330\010\017\210q\340\004\034\230H\240G\2501\250A\330\004!\240\021\360\010\000\n\013\330\010\021\220\032\2301\230K\240q\250\001\340\004\013\2101";
 static const char __pyx_k_asyncio_coroutines[] = "asyncio.coroutines";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
 static const char __pyx_k_Invalid_UUID_format[] = "Invalid UUID format";
@@ -2428,10 +2418,10 @@ static CYTHON_SMALL_CODE int __pyx_m_traverse(PyObject *m, visitproc visit, void
 #endif
 /* #### Code section: module_code ### */
 
-/* "python_uuidv47/_uuidv47.pyx":28
- * cdef bool_t _key_set = False
+/* "python_uuidv47/_uuidv47.pyx":29
+ * cdef bool _key_set = False
  * 
- * cpdef bool_t set_keys(uint64_t k0, uint64_t k1):             # <<<<<<<<<<<<<<
+ * cpdef bool set_keys(uint64_t k0, uint64_t k1):             # <<<<<<<<<<<<<<
  *     """Set global encryption keys for encoding/decoding operations.
  * 
 */
@@ -2443,10 +2433,10 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static __pyx_t_14python_uuidv47_8_uuidv47_bool_t __pyx_f_14python_uuidv47_8_uuidv47_set_keys(uint64_t __pyx_v_k0, uint64_t __pyx_v_k1, CYTHON_UNUSED int __pyx_skip_dispatch) {
-  __pyx_t_14python_uuidv47_8_uuidv47_bool_t __pyx_r;
+static bool __pyx_f_14python_uuidv47_8_uuidv47_set_keys(uint64_t __pyx_v_k0, uint64_t __pyx_v_k1, CYTHON_UNUSED int __pyx_skip_dispatch) {
+  bool __pyx_r;
 
-  /* "python_uuidv47/_uuidv47.pyx":42
+  /* "python_uuidv47/_uuidv47.pyx":43
  *     """
  *     global _global_key, _key_set
  *     _global_key.k0 = k0             # <<<<<<<<<<<<<<
@@ -2455,7 +2445,7 @@ static __pyx_t_14python_uuidv47_8_uuidv47_bool_t __pyx_f_14python_uuidv47_8_uuid
 */
   __pyx_v_14python_uuidv47_8_uuidv47__global_key.k0 = __pyx_v_k0;
 
-  /* "python_uuidv47/_uuidv47.pyx":43
+  /* "python_uuidv47/_uuidv47.pyx":44
  *     global _global_key, _key_set
  *     _global_key.k0 = k0
  *     _global_key.k1 = k1             # <<<<<<<<<<<<<<
@@ -2464,7 +2454,7 @@ static __pyx_t_14python_uuidv47_8_uuidv47_bool_t __pyx_f_14python_uuidv47_8_uuid
 */
   __pyx_v_14python_uuidv47_8_uuidv47__global_key.k1 = __pyx_v_k1;
 
-  /* "python_uuidv47/_uuidv47.pyx":44
+  /* "python_uuidv47/_uuidv47.pyx":45
  *     _global_key.k0 = k0
  *     _global_key.k1 = k1
  *     _key_set = True             # <<<<<<<<<<<<<<
@@ -2473,20 +2463,20 @@ static __pyx_t_14python_uuidv47_8_uuidv47_bool_t __pyx_f_14python_uuidv47_8_uuid
 */
   __pyx_v_14python_uuidv47_8_uuidv47__key_set = 1;
 
-  /* "python_uuidv47/_uuidv47.pyx":45
+  /* "python_uuidv47/_uuidv47.pyx":46
  *     _global_key.k1 = k1
  *     _key_set = True
  *     return True             # <<<<<<<<<<<<<<
  * 
- * cpdef bool_t has_keys():
+ * cpdef bool has_keys():
 */
   __pyx_r = 1;
   goto __pyx_L0;
 
-  /* "python_uuidv47/_uuidv47.pyx":28
- * cdef bool_t _key_set = False
+  /* "python_uuidv47/_uuidv47.pyx":29
+ * cdef bool _key_set = False
  * 
- * cpdef bool_t set_keys(uint64_t k0, uint64_t k1):             # <<<<<<<<<<<<<<
+ * cpdef bool set_keys(uint64_t k0, uint64_t k1):             # <<<<<<<<<<<<<<
  *     """Set global encryption keys for encoding/decoding operations.
  * 
 */
@@ -2504,7 +2494,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_14python_uuidv47_8_uuidv47_set_keys, "set_keys(uint64_t k0, uint64_t k1) -> bool_t\n\nSet global encryption keys for encoding/decoding operations.\n\nArgs:\n    k0: First 64-bit encryption key\n    k1: Second 64-bit encryption key\n    \nReturns:\n    True if keys were set successfully\n    \nRaises:\n    OverflowError: If keys don't fit in 64-bit integers");
+PyDoc_STRVAR(__pyx_doc_14python_uuidv47_8_uuidv47_set_keys, "set_keys(uint64_t k0, uint64_t k1) -> bool\n\nSet global encryption keys for encoding/decoding operations.\n\nArgs:\n    k0: First 64-bit encryption key\n    k1: Second 64-bit encryption key\n    \nReturns:\n    True if keys were set successfully\n    \nRaises:\n    OverflowError: If keys don't fit in 64-bit integers");
 static PyMethodDef __pyx_mdef_14python_uuidv47_8_uuidv47_1set_keys = {"set_keys", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_14python_uuidv47_8_uuidv47_1set_keys, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_14python_uuidv47_8_uuidv47_set_keys};
 static PyObject *__pyx_pw_14python_uuidv47_8_uuidv47_1set_keys(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -2537,39 +2527,39 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_k0,&__pyx_mstate_global->__pyx_n_u_k1,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 28, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 29, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 28, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 29, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 28, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 29, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "set_keys", 0) < 0) __PYX_ERR(0, 28, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "set_keys", 0) < 0) __PYX_ERR(0, 29, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 2; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("set_keys", 1, 2, 2, i); __PYX_ERR(0, 28, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("set_keys", 1, 2, 2, i); __PYX_ERR(0, 29, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 2)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 28, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 29, __pyx_L3_error)
       values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 28, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 29, __pyx_L3_error)
     }
-    __pyx_v_k0 = __Pyx_PyLong_As_uint64_t(values[0]); if (unlikely((__pyx_v_k0 == ((uint64_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 28, __pyx_L3_error)
-    __pyx_v_k1 = __Pyx_PyLong_As_uint64_t(values[1]); if (unlikely((__pyx_v_k1 == ((uint64_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 28, __pyx_L3_error)
+    __pyx_v_k0 = __Pyx_PyLong_As_uint64_t(values[0]); if (unlikely((__pyx_v_k0 == ((uint64_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 29, __pyx_L3_error)
+    __pyx_v_k1 = __Pyx_PyLong_As_uint64_t(values[1]); if (unlikely((__pyx_v_k1 == ((uint64_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 29, __pyx_L3_error)
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("set_keys", 1, 2, 2, __pyx_nargs); __PYX_ERR(0, 28, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("set_keys", 1, 2, 2, __pyx_nargs); __PYX_ERR(0, 29, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -2593,15 +2583,15 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
 static PyObject *__pyx_pf_14python_uuidv47_8_uuidv47_set_keys(CYTHON_UNUSED PyObject *__pyx_self, uint64_t __pyx_v_k0, uint64_t __pyx_v_k1) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
-  __pyx_t_14python_uuidv47_8_uuidv47_bool_t __pyx_t_1;
+  bool __pyx_t_1;
   PyObject *__pyx_t_2 = NULL;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("set_keys", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_14python_uuidv47_8_uuidv47_set_keys(__pyx_v_k0, __pyx_v_k1, 1); if (unlikely(__pyx_t_1 == ((__pyx_t_14python_uuidv47_8_uuidv47_bool_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 28, __pyx_L1_error)
-  __pyx_t_2 = __Pyx_PyLong_From_int(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 28, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_14python_uuidv47_8_uuidv47_set_keys(__pyx_v_k0, __pyx_v_k1, 1); if (unlikely(__pyx_t_1 == ((bool)-1) && PyErr_Occurred())) __PYX_ERR(0, 29, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyBool_FromLong(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 29, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
@@ -2618,19 +2608,19 @@ static PyObject *__pyx_pf_14python_uuidv47_8_uuidv47_set_keys(CYTHON_UNUSED PyOb
   return __pyx_r;
 }
 
-/* "python_uuidv47/_uuidv47.pyx":47
+/* "python_uuidv47/_uuidv47.pyx":48
  *     return True
  * 
- * cpdef bool_t has_keys():             # <<<<<<<<<<<<<<
+ * cpdef bool has_keys():             # <<<<<<<<<<<<<<
  *     """Check if global encryption keys have been set.
  * 
 */
 
 static PyObject *__pyx_pw_14python_uuidv47_8_uuidv47_3has_keys(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static __pyx_t_14python_uuidv47_8_uuidv47_bool_t __pyx_f_14python_uuidv47_8_uuidv47_has_keys(CYTHON_UNUSED int __pyx_skip_dispatch) {
-  __pyx_t_14python_uuidv47_8_uuidv47_bool_t __pyx_r;
+static bool __pyx_f_14python_uuidv47_8_uuidv47_has_keys(CYTHON_UNUSED int __pyx_skip_dispatch) {
+  bool __pyx_r;
 
-  /* "python_uuidv47/_uuidv47.pyx":53
+  /* "python_uuidv47/_uuidv47.pyx":54
  *         True if keys are set, False otherwise
  *     """
  *     return _key_set             # <<<<<<<<<<<<<<
@@ -2640,10 +2630,10 @@ static __pyx_t_14python_uuidv47_8_uuidv47_bool_t __pyx_f_14python_uuidv47_8_uuid
   __pyx_r = __pyx_v_14python_uuidv47_8_uuidv47__key_set;
   goto __pyx_L0;
 
-  /* "python_uuidv47/_uuidv47.pyx":47
+  /* "python_uuidv47/_uuidv47.pyx":48
  *     return True
  * 
- * cpdef bool_t has_keys():             # <<<<<<<<<<<<<<
+ * cpdef bool has_keys():             # <<<<<<<<<<<<<<
  *     """Check if global encryption keys have been set.
  * 
 */
@@ -2655,7 +2645,7 @@ static __pyx_t_14python_uuidv47_8_uuidv47_bool_t __pyx_f_14python_uuidv47_8_uuid
 
 /* Python wrapper */
 static PyObject *__pyx_pw_14python_uuidv47_8_uuidv47_3has_keys(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-PyDoc_STRVAR(__pyx_doc_14python_uuidv47_8_uuidv47_2has_keys, "has_keys() -> bool_t\n\nCheck if global encryption keys have been set.\n\nReturns:\n    True if keys are set, False otherwise");
+PyDoc_STRVAR(__pyx_doc_14python_uuidv47_8_uuidv47_2has_keys, "has_keys() -> bool\n\nCheck if global encryption keys have been set.\n\nReturns:\n    True if keys are set, False otherwise");
 static PyMethodDef __pyx_mdef_14python_uuidv47_8_uuidv47_3has_keys = {"has_keys", (PyCFunction)__pyx_pw_14python_uuidv47_8_uuidv47_3has_keys, METH_NOARGS, __pyx_doc_14python_uuidv47_8_uuidv47_2has_keys};
 static PyObject *__pyx_pw_14python_uuidv47_8_uuidv47_3has_keys(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused) {
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
@@ -2673,15 +2663,15 @@ static PyObject *__pyx_pw_14python_uuidv47_8_uuidv47_3has_keys(PyObject *__pyx_s
 static PyObject *__pyx_pf_14python_uuidv47_8_uuidv47_2has_keys(CYTHON_UNUSED PyObject *__pyx_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
-  __pyx_t_14python_uuidv47_8_uuidv47_bool_t __pyx_t_1;
+  bool __pyx_t_1;
   PyObject *__pyx_t_2 = NULL;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("has_keys", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_14python_uuidv47_8_uuidv47_has_keys(1); if (unlikely(__pyx_t_1 == ((__pyx_t_14python_uuidv47_8_uuidv47_bool_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 47, __pyx_L1_error)
-  __pyx_t_2 = __Pyx_PyLong_From_int(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 47, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_14python_uuidv47_8_uuidv47_has_keys(1); if (unlikely(__pyx_t_1 == ((bool)-1) && PyErr_Occurred())) __PYX_ERR(0, 48, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyBool_FromLong(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 48, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
@@ -2698,7 +2688,7 @@ static PyObject *__pyx_pf_14python_uuidv47_8_uuidv47_2has_keys(CYTHON_UNUSED PyO
   return __pyx_r;
 }
 
-/* "python_uuidv47/_uuidv47.pyx":55
+/* "python_uuidv47/_uuidv47.pyx":56
  *     return _key_set
  * 
  * cpdef str encode(str uuid_str):             # <<<<<<<<<<<<<<
@@ -2732,7 +2722,7 @@ static PyObject *__pyx_f_14python_uuidv47_8_uuidv47_encode(PyObject *__pyx_v_uui
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("encode", 0);
 
-  /* "python_uuidv47/_uuidv47.pyx":68
+  /* "python_uuidv47/_uuidv47.pyx":69
  *         ValueError: If UUID format is invalid
  *     """
  *     if not _key_set:             # <<<<<<<<<<<<<<
@@ -2742,7 +2732,7 @@ static PyObject *__pyx_f_14python_uuidv47_8_uuidv47_encode(PyObject *__pyx_v_uui
   __pyx_t_1 = (!(__pyx_v_14python_uuidv47_8_uuidv47__key_set != 0));
   if (unlikely(__pyx_t_1)) {
 
-    /* "python_uuidv47/_uuidv47.pyx":69
+    /* "python_uuidv47/_uuidv47.pyx":70
  *     """
  *     if not _key_set:
  *         raise RuntimeError("Keys not set. Call set_keys() first.")             # <<<<<<<<<<<<<<
@@ -2758,14 +2748,14 @@ static PyObject *__pyx_f_14python_uuidv47_8_uuidv47_encode(PyObject *__pyx_v_uui
       __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 69, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 70, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
     }
     __Pyx_Raise(__pyx_t_2, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __PYX_ERR(0, 69, __pyx_L1_error)
+    __PYX_ERR(0, 70, __pyx_L1_error)
 
-    /* "python_uuidv47/_uuidv47.pyx":68
+    /* "python_uuidv47/_uuidv47.pyx":69
  *         ValueError: If UUID format is invalid
  *     """
  *     if not _key_set:             # <<<<<<<<<<<<<<
@@ -2774,7 +2764,7 @@ static PyObject *__pyx_f_14python_uuidv47_8_uuidv47_encode(PyObject *__pyx_v_uui
 */
   }
 
-  /* "python_uuidv47/_uuidv47.pyx":71
+  /* "python_uuidv47/_uuidv47.pyx":72
  *         raise RuntimeError("Keys not set. Call set_keys() first.")
  * 
  *     cdef bytes uuid_bytes = uuid_str.encode('ascii')             # <<<<<<<<<<<<<<
@@ -2783,24 +2773,24 @@ static PyObject *__pyx_f_14python_uuidv47_8_uuidv47_encode(PyObject *__pyx_v_uui
 */
   if (unlikely(__pyx_v_uuid_str == Py_None)) {
     PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "encode");
-    __PYX_ERR(0, 71, __pyx_L1_error)
+    __PYX_ERR(0, 72, __pyx_L1_error)
   }
-  __pyx_t_2 = PyUnicode_AsASCIIString(__pyx_v_uuid_str); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 71, __pyx_L1_error)
+  __pyx_t_2 = PyUnicode_AsASCIIString(__pyx_v_uuid_str); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 72, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_v_uuid_bytes = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "python_uuidv47/_uuidv47.pyx":72
+  /* "python_uuidv47/_uuidv47.pyx":73
  * 
  *     cdef bytes uuid_bytes = uuid_str.encode('ascii')
  *     cdef const char* uuid_cstr = uuid_bytes             # <<<<<<<<<<<<<<
  *     cdef uuid128_t v7, facade
  *     cdef char facade_str[37]
 */
-  __pyx_t_6 = __Pyx_PyBytes_AsString(__pyx_v_uuid_bytes); if (unlikely((!__pyx_t_6) && PyErr_Occurred())) __PYX_ERR(0, 72, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyBytes_AsString(__pyx_v_uuid_bytes); if (unlikely((!__pyx_t_6) && PyErr_Occurred())) __PYX_ERR(0, 73, __pyx_L1_error)
   __pyx_v_uuid_cstr = __pyx_t_6;
 
-  /* "python_uuidv47/_uuidv47.pyx":76
+  /* "python_uuidv47/_uuidv47.pyx":77
  *     cdef char facade_str[37]
  * 
  *     with nogil:             # <<<<<<<<<<<<<<
@@ -2814,7 +2804,7 @@ static PyObject *__pyx_f_14python_uuidv47_8_uuidv47_encode(PyObject *__pyx_v_uui
       __Pyx_FastGIL_Remember();
       /*try:*/ {
 
-        /* "python_uuidv47/_uuidv47.pyx":77
+        /* "python_uuidv47/_uuidv47.pyx":78
  * 
  *     with nogil:
  *         if not uuid_parse(uuid_cstr, &v7):             # <<<<<<<<<<<<<<
@@ -2824,7 +2814,7 @@ static PyObject *__pyx_f_14python_uuidv47_8_uuidv47_encode(PyObject *__pyx_v_uui
         __pyx_t_1 = (!(uuid_parse(__pyx_v_uuid_cstr, (&__pyx_v_v7)) != 0));
         if (unlikely(__pyx_t_1)) {
 
-          /* "python_uuidv47/_uuidv47.pyx":78
+          /* "python_uuidv47/_uuidv47.pyx":79
  *     with nogil:
  *         if not uuid_parse(uuid_cstr, &v7):
  *             with gil:             # <<<<<<<<<<<<<<
@@ -2835,7 +2825,7 @@ static PyObject *__pyx_f_14python_uuidv47_8_uuidv47_encode(PyObject *__pyx_v_uui
               PyGILState_STATE __pyx_gilstate_save = __Pyx_PyGILState_Ensure();
               /*try:*/ {
 
-                /* "python_uuidv47/_uuidv47.pyx":79
+                /* "python_uuidv47/_uuidv47.pyx":80
  *         if not uuid_parse(uuid_cstr, &v7):
  *             with gil:
  *                 raise ValueError("Invalid UUIDv7 format")             # <<<<<<<<<<<<<<
@@ -2851,15 +2841,15 @@ static PyObject *__pyx_f_14python_uuidv47_8_uuidv47_encode(PyObject *__pyx_v_uui
                   __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
                   __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
                   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-                  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 79, __pyx_L9_error)
+                  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 80, __pyx_L9_error)
                   __Pyx_GOTREF(__pyx_t_2);
                 }
                 __Pyx_Raise(__pyx_t_2, 0, 0, 0);
                 __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-                __PYX_ERR(0, 79, __pyx_L9_error)
+                __PYX_ERR(0, 80, __pyx_L9_error)
               }
 
-              /* "python_uuidv47/_uuidv47.pyx":78
+              /* "python_uuidv47/_uuidv47.pyx":79
  *     with nogil:
  *         if not uuid_parse(uuid_cstr, &v7):
  *             with gil:             # <<<<<<<<<<<<<<
@@ -2874,7 +2864,7 @@ static PyObject *__pyx_f_14python_uuidv47_8_uuidv47_encode(PyObject *__pyx_v_uui
               }
           }
 
-          /* "python_uuidv47/_uuidv47.pyx":77
+          /* "python_uuidv47/_uuidv47.pyx":78
  * 
  *     with nogil:
  *         if not uuid_parse(uuid_cstr, &v7):             # <<<<<<<<<<<<<<
@@ -2883,7 +2873,7 @@ static PyObject *__pyx_f_14python_uuidv47_8_uuidv47_encode(PyObject *__pyx_v_uui
 */
         }
 
-        /* "python_uuidv47/_uuidv47.pyx":81
+        /* "python_uuidv47/_uuidv47.pyx":82
  *                 raise ValueError("Invalid UUIDv7 format")
  * 
  *         facade = uuidv47_encode_v4facade(v7, _global_key)             # <<<<<<<<<<<<<<
@@ -2892,7 +2882,7 @@ static PyObject *__pyx_f_14python_uuidv47_8_uuidv47_encode(PyObject *__pyx_v_uui
 */
         __pyx_v_facade = uuidv47_encode_v4facade(__pyx_v_v7, __pyx_v_14python_uuidv47_8_uuidv47__global_key);
 
-        /* "python_uuidv47/_uuidv47.pyx":82
+        /* "python_uuidv47/_uuidv47.pyx":83
  * 
  *         facade = uuidv47_encode_v4facade(v7, _global_key)
  *         uuid_format(&facade, facade_str)             # <<<<<<<<<<<<<<
@@ -2902,7 +2892,7 @@ static PyObject *__pyx_f_14python_uuidv47_8_uuidv47_encode(PyObject *__pyx_v_uui
         uuid_format((&__pyx_v_facade), __pyx_v_facade_str);
       }
 
-      /* "python_uuidv47/_uuidv47.pyx":76
+      /* "python_uuidv47/_uuidv47.pyx":77
  *     cdef char facade_str[37]
  * 
  *     with nogil:             # <<<<<<<<<<<<<<
@@ -2924,7 +2914,7 @@ static PyObject *__pyx_f_14python_uuidv47_8_uuidv47_encode(PyObject *__pyx_v_uui
       }
   }
 
-  /* "python_uuidv47/_uuidv47.pyx":84
+  /* "python_uuidv47/_uuidv47.pyx":85
  *         uuid_format(&facade, facade_str)
  * 
  *     return facade_str[:36].decode('ascii')             # <<<<<<<<<<<<<<
@@ -2932,13 +2922,13 @@ static PyObject *__pyx_f_14python_uuidv47_8_uuidv47_encode(PyObject *__pyx_v_uui
  * cpdef str decode(str facade_str):
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_decode_c_string(__pyx_v_facade_str, 0, 36, NULL, NULL, PyUnicode_DecodeASCII); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 84, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_decode_c_string(__pyx_v_facade_str, 0, 36, NULL, NULL, PyUnicode_DecodeASCII); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 85, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "python_uuidv47/_uuidv47.pyx":55
+  /* "python_uuidv47/_uuidv47.pyx":56
  *     return _key_set
  * 
  * cpdef str encode(str uuid_str):             # <<<<<<<<<<<<<<
@@ -3000,32 +2990,32 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_uuid_str,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 55, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 56, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 55, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 56, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "encode", 0) < 0) __PYX_ERR(0, 55, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "encode", 0) < 0) __PYX_ERR(0, 56, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("encode", 1, 1, 1, i); __PYX_ERR(0, 55, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("encode", 1, 1, 1, i); __PYX_ERR(0, 56, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 55, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 56, __pyx_L3_error)
     }
     __pyx_v_uuid_str = ((PyObject*)values[0]);
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("encode", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 55, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("encode", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 56, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -3036,7 +3026,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_uuid_str), (&PyUnicode_Type), 1, "uuid_str", 1))) __PYX_ERR(0, 55, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_uuid_str), (&PyUnicode_Type), 1, "uuid_str", 1))) __PYX_ERR(0, 56, __pyx_L1_error)
   __pyx_r = __pyx_pf_14python_uuidv47_8_uuidv47_4encode(__pyx_self, __pyx_v_uuid_str);
 
   /* function exit code */
@@ -3065,7 +3055,7 @@ static PyObject *__pyx_pf_14python_uuidv47_8_uuidv47_4encode(CYTHON_UNUSED PyObj
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("encode", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_14python_uuidv47_8_uuidv47_encode(__pyx_v_uuid_str, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 55, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_14python_uuidv47_8_uuidv47_encode(__pyx_v_uuid_str, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 56, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -3082,7 +3072,7 @@ static PyObject *__pyx_pf_14python_uuidv47_8_uuidv47_4encode(CYTHON_UNUSED PyObj
   return __pyx_r;
 }
 
-/* "python_uuidv47/_uuidv47.pyx":86
+/* "python_uuidv47/_uuidv47.pyx":87
  *     return facade_str[:36].decode('ascii')
  * 
  * cpdef str decode(str facade_str):             # <<<<<<<<<<<<<<
@@ -3116,7 +3106,7 @@ static PyObject *__pyx_f_14python_uuidv47_8_uuidv47_decode(PyObject *__pyx_v_fac
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("decode", 0);
 
-  /* "python_uuidv47/_uuidv47.pyx":99
+  /* "python_uuidv47/_uuidv47.pyx":100
  *         ValueError: If facade format is invalid
  *     """
  *     if not _key_set:             # <<<<<<<<<<<<<<
@@ -3126,7 +3116,7 @@ static PyObject *__pyx_f_14python_uuidv47_8_uuidv47_decode(PyObject *__pyx_v_fac
   __pyx_t_1 = (!(__pyx_v_14python_uuidv47_8_uuidv47__key_set != 0));
   if (unlikely(__pyx_t_1)) {
 
-    /* "python_uuidv47/_uuidv47.pyx":100
+    /* "python_uuidv47/_uuidv47.pyx":101
  *     """
  *     if not _key_set:
  *         raise RuntimeError("Keys not set. Call set_keys() first.")             # <<<<<<<<<<<<<<
@@ -3142,14 +3132,14 @@ static PyObject *__pyx_f_14python_uuidv47_8_uuidv47_decode(PyObject *__pyx_v_fac
       __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 100, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 101, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
     }
     __Pyx_Raise(__pyx_t_2, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __PYX_ERR(0, 100, __pyx_L1_error)
+    __PYX_ERR(0, 101, __pyx_L1_error)
 
-    /* "python_uuidv47/_uuidv47.pyx":99
+    /* "python_uuidv47/_uuidv47.pyx":100
  *         ValueError: If facade format is invalid
  *     """
  *     if not _key_set:             # <<<<<<<<<<<<<<
@@ -3158,7 +3148,7 @@ static PyObject *__pyx_f_14python_uuidv47_8_uuidv47_decode(PyObject *__pyx_v_fac
 */
   }
 
-  /* "python_uuidv47/_uuidv47.pyx":102
+  /* "python_uuidv47/_uuidv47.pyx":103
  *         raise RuntimeError("Keys not set. Call set_keys() first.")
  * 
  *     cdef bytes facade_bytes = facade_str.encode('ascii')             # <<<<<<<<<<<<<<
@@ -3167,24 +3157,24 @@ static PyObject *__pyx_f_14python_uuidv47_8_uuidv47_decode(PyObject *__pyx_v_fac
 */
   if (unlikely(__pyx_v_facade_str == Py_None)) {
     PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "encode");
-    __PYX_ERR(0, 102, __pyx_L1_error)
+    __PYX_ERR(0, 103, __pyx_L1_error)
   }
-  __pyx_t_2 = PyUnicode_AsASCIIString(__pyx_v_facade_str); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 102, __pyx_L1_error)
+  __pyx_t_2 = PyUnicode_AsASCIIString(__pyx_v_facade_str); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 103, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_v_facade_bytes = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "python_uuidv47/_uuidv47.pyx":103
+  /* "python_uuidv47/_uuidv47.pyx":104
  * 
  *     cdef bytes facade_bytes = facade_str.encode('ascii')
  *     cdef const char* facade_cstr = facade_bytes             # <<<<<<<<<<<<<<
  *     cdef uuid128_t facade, v7
  *     cdef char v7_str[37]
 */
-  __pyx_t_6 = __Pyx_PyBytes_AsString(__pyx_v_facade_bytes); if (unlikely((!__pyx_t_6) && PyErr_Occurred())) __PYX_ERR(0, 103, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyBytes_AsString(__pyx_v_facade_bytes); if (unlikely((!__pyx_t_6) && PyErr_Occurred())) __PYX_ERR(0, 104, __pyx_L1_error)
   __pyx_v_facade_cstr = __pyx_t_6;
 
-  /* "python_uuidv47/_uuidv47.pyx":107
+  /* "python_uuidv47/_uuidv47.pyx":108
  *     cdef char v7_str[37]
  * 
  *     with nogil:             # <<<<<<<<<<<<<<
@@ -3198,7 +3188,7 @@ static PyObject *__pyx_f_14python_uuidv47_8_uuidv47_decode(PyObject *__pyx_v_fac
       __Pyx_FastGIL_Remember();
       /*try:*/ {
 
-        /* "python_uuidv47/_uuidv47.pyx":108
+        /* "python_uuidv47/_uuidv47.pyx":109
  * 
  *     with nogil:
  *         if not uuid_parse(facade_cstr, &facade):             # <<<<<<<<<<<<<<
@@ -3208,7 +3198,7 @@ static PyObject *__pyx_f_14python_uuidv47_8_uuidv47_decode(PyObject *__pyx_v_fac
         __pyx_t_1 = (!(uuid_parse(__pyx_v_facade_cstr, (&__pyx_v_facade)) != 0));
         if (unlikely(__pyx_t_1)) {
 
-          /* "python_uuidv47/_uuidv47.pyx":109
+          /* "python_uuidv47/_uuidv47.pyx":110
  *     with nogil:
  *         if not uuid_parse(facade_cstr, &facade):
  *             with gil:             # <<<<<<<<<<<<<<
@@ -3219,7 +3209,7 @@ static PyObject *__pyx_f_14python_uuidv47_8_uuidv47_decode(PyObject *__pyx_v_fac
               PyGILState_STATE __pyx_gilstate_save = __Pyx_PyGILState_Ensure();
               /*try:*/ {
 
-                /* "python_uuidv47/_uuidv47.pyx":110
+                /* "python_uuidv47/_uuidv47.pyx":111
  *         if not uuid_parse(facade_cstr, &facade):
  *             with gil:
  *                 raise ValueError("Invalid UUID format")             # <<<<<<<<<<<<<<
@@ -3235,15 +3225,15 @@ static PyObject *__pyx_f_14python_uuidv47_8_uuidv47_decode(PyObject *__pyx_v_fac
                   __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
                   __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
                   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-                  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 110, __pyx_L9_error)
+                  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 111, __pyx_L9_error)
                   __Pyx_GOTREF(__pyx_t_2);
                 }
                 __Pyx_Raise(__pyx_t_2, 0, 0, 0);
                 __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-                __PYX_ERR(0, 110, __pyx_L9_error)
+                __PYX_ERR(0, 111, __pyx_L9_error)
               }
 
-              /* "python_uuidv47/_uuidv47.pyx":109
+              /* "python_uuidv47/_uuidv47.pyx":110
  *     with nogil:
  *         if not uuid_parse(facade_cstr, &facade):
  *             with gil:             # <<<<<<<<<<<<<<
@@ -3258,7 +3248,7 @@ static PyObject *__pyx_f_14python_uuidv47_8_uuidv47_decode(PyObject *__pyx_v_fac
               }
           }
 
-          /* "python_uuidv47/_uuidv47.pyx":108
+          /* "python_uuidv47/_uuidv47.pyx":109
  * 
  *     with nogil:
  *         if not uuid_parse(facade_cstr, &facade):             # <<<<<<<<<<<<<<
@@ -3267,7 +3257,7 @@ static PyObject *__pyx_f_14python_uuidv47_8_uuidv47_decode(PyObject *__pyx_v_fac
 */
         }
 
-        /* "python_uuidv47/_uuidv47.pyx":112
+        /* "python_uuidv47/_uuidv47.pyx":113
  *                 raise ValueError("Invalid UUID format")
  * 
  *         v7 = uuidv47_decode_v4facade(facade, _global_key)             # <<<<<<<<<<<<<<
@@ -3276,7 +3266,7 @@ static PyObject *__pyx_f_14python_uuidv47_8_uuidv47_decode(PyObject *__pyx_v_fac
 */
         __pyx_v_v7 = uuidv47_decode_v4facade(__pyx_v_facade, __pyx_v_14python_uuidv47_8_uuidv47__global_key);
 
-        /* "python_uuidv47/_uuidv47.pyx":113
+        /* "python_uuidv47/_uuidv47.pyx":114
  * 
  *         v7 = uuidv47_decode_v4facade(facade, _global_key)
  *         uuid_format(&v7, v7_str)             # <<<<<<<<<<<<<<
@@ -3286,7 +3276,7 @@ static PyObject *__pyx_f_14python_uuidv47_8_uuidv47_decode(PyObject *__pyx_v_fac
         uuid_format((&__pyx_v_v7), __pyx_v_v7_str);
       }
 
-      /* "python_uuidv47/_uuidv47.pyx":107
+      /* "python_uuidv47/_uuidv47.pyx":108
  *     cdef char v7_str[37]
  * 
  *     with nogil:             # <<<<<<<<<<<<<<
@@ -3308,21 +3298,21 @@ static PyObject *__pyx_f_14python_uuidv47_8_uuidv47_decode(PyObject *__pyx_v_fac
       }
   }
 
-  /* "python_uuidv47/_uuidv47.pyx":115
+  /* "python_uuidv47/_uuidv47.pyx":116
  *         uuid_format(&v7, v7_str)
  * 
  *     return v7_str[:36].decode('ascii')             # <<<<<<<<<<<<<<
  * 
- * cpdef bool_t uuid_parse_py(str uuid_str):
+ * cpdef bool uuid_parse_py(str uuid_str):
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_decode_c_string(__pyx_v_v7_str, 0, 36, NULL, NULL, PyUnicode_DecodeASCII); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 115, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_decode_c_string(__pyx_v_v7_str, 0, 36, NULL, NULL, PyUnicode_DecodeASCII); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 116, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "python_uuidv47/_uuidv47.pyx":86
+  /* "python_uuidv47/_uuidv47.pyx":87
  *     return facade_str[:36].decode('ascii')
  * 
  * cpdef str decode(str facade_str):             # <<<<<<<<<<<<<<
@@ -3384,32 +3374,32 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_facade_str,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 86, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 87, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 86, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 87, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "decode", 0) < 0) __PYX_ERR(0, 86, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "decode", 0) < 0) __PYX_ERR(0, 87, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("decode", 1, 1, 1, i); __PYX_ERR(0, 86, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("decode", 1, 1, 1, i); __PYX_ERR(0, 87, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 86, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 87, __pyx_L3_error)
     }
     __pyx_v_facade_str = ((PyObject*)values[0]);
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("decode", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 86, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("decode", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 87, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -3420,7 +3410,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_facade_str), (&PyUnicode_Type), 1, "facade_str", 1))) __PYX_ERR(0, 86, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_facade_str), (&PyUnicode_Type), 1, "facade_str", 1))) __PYX_ERR(0, 87, __pyx_L1_error)
   __pyx_r = __pyx_pf_14python_uuidv47_8_uuidv47_6decode(__pyx_self, __pyx_v_facade_str);
 
   /* function exit code */
@@ -3449,7 +3439,7 @@ static PyObject *__pyx_pf_14python_uuidv47_8_uuidv47_6decode(CYTHON_UNUSED PyObj
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("decode", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_14python_uuidv47_8_uuidv47_decode(__pyx_v_facade_str, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 86, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_14python_uuidv47_8_uuidv47_decode(__pyx_v_facade_str, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 87, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -3466,10 +3456,10 @@ static PyObject *__pyx_pf_14python_uuidv47_8_uuidv47_6decode(CYTHON_UNUSED PyObj
   return __pyx_r;
 }
 
-/* "python_uuidv47/_uuidv47.pyx":117
+/* "python_uuidv47/_uuidv47.pyx":118
  *     return v7_str[:36].decode('ascii')
  * 
- * cpdef bool_t uuid_parse_py(str uuid_str):             # <<<<<<<<<<<<<<
+ * cpdef bool uuid_parse_py(str uuid_str):             # <<<<<<<<<<<<<<
  *     """Validate if a string is a properly formatted UUID.
  * 
 */
@@ -3481,12 +3471,12 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static __pyx_t_14python_uuidv47_8_uuidv47_bool_t __pyx_f_14python_uuidv47_8_uuidv47_uuid_parse_py(PyObject *__pyx_v_uuid_str, CYTHON_UNUSED int __pyx_skip_dispatch) {
+static bool __pyx_f_14python_uuidv47_8_uuidv47_uuid_parse_py(PyObject *__pyx_v_uuid_str, CYTHON_UNUSED int __pyx_skip_dispatch) {
   PyObject *__pyx_v_uuid_bytes = 0;
   char const *__pyx_v_uuid_cstr;
   uuid128_t __pyx_v_uuid;
-  __pyx_t_14python_uuidv47_8_uuidv47_bool_t __pyx_v_result;
-  __pyx_t_14python_uuidv47_8_uuidv47_bool_t __pyx_r;
+  bool __pyx_v_result;
+  bool __pyx_r;
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
   int __pyx_t_2;
@@ -3497,7 +3487,7 @@ static __pyx_t_14python_uuidv47_8_uuidv47_bool_t __pyx_f_14python_uuidv47_8_uuid
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("uuid_parse_py", 0);
 
-  /* "python_uuidv47/_uuidv47.pyx":126
+  /* "python_uuidv47/_uuidv47.pyx":127
  *         True if valid UUID format, False otherwise
  *     """
  *     if not uuid_str:             # <<<<<<<<<<<<<<
@@ -3508,14 +3498,14 @@ static __pyx_t_14python_uuidv47_8_uuidv47_bool_t __pyx_f_14python_uuidv47_8_uuid
   else
   {
     Py_ssize_t __pyx_temp = __Pyx_PyUnicode_IS_TRUE(__pyx_v_uuid_str);
-    if (unlikely(((!CYTHON_ASSUME_SAFE_SIZE) && __pyx_temp < 0))) __PYX_ERR(0, 126, __pyx_L1_error)
+    if (unlikely(((!CYTHON_ASSUME_SAFE_SIZE) && __pyx_temp < 0))) __PYX_ERR(0, 127, __pyx_L1_error)
     __pyx_t_1 = (__pyx_temp != 0);
   }
 
   __pyx_t_2 = (!__pyx_t_1);
   if (__pyx_t_2) {
 
-    /* "python_uuidv47/_uuidv47.pyx":127
+    /* "python_uuidv47/_uuidv47.pyx":128
  *     """
  *     if not uuid_str:
  *         return False             # <<<<<<<<<<<<<<
@@ -3525,7 +3515,7 @@ static __pyx_t_14python_uuidv47_8_uuidv47_bool_t __pyx_f_14python_uuidv47_8_uuid
     __pyx_r = 0;
     goto __pyx_L0;
 
-    /* "python_uuidv47/_uuidv47.pyx":126
+    /* "python_uuidv47/_uuidv47.pyx":127
  *         True if valid UUID format, False otherwise
  *     """
  *     if not uuid_str:             # <<<<<<<<<<<<<<
@@ -3534,7 +3524,7 @@ static __pyx_t_14python_uuidv47_8_uuidv47_bool_t __pyx_f_14python_uuidv47_8_uuid
 */
   }
 
-  /* "python_uuidv47/_uuidv47.pyx":129
+  /* "python_uuidv47/_uuidv47.pyx":130
  *         return False
  * 
  *     cdef bytes uuid_bytes = uuid_str.encode('ascii')             # <<<<<<<<<<<<<<
@@ -3543,25 +3533,25 @@ static __pyx_t_14python_uuidv47_8_uuidv47_bool_t __pyx_f_14python_uuidv47_8_uuid
 */
   if (unlikely(__pyx_v_uuid_str == Py_None)) {
     PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "encode");
-    __PYX_ERR(0, 129, __pyx_L1_error)
+    __PYX_ERR(0, 130, __pyx_L1_error)
   }
-  __pyx_t_3 = PyUnicode_AsASCIIString(__pyx_v_uuid_str); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 129, __pyx_L1_error)
+  __pyx_t_3 = PyUnicode_AsASCIIString(__pyx_v_uuid_str); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 130, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_v_uuid_bytes = ((PyObject*)__pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "python_uuidv47/_uuidv47.pyx":130
+  /* "python_uuidv47/_uuidv47.pyx":131
  * 
  *     cdef bytes uuid_bytes = uuid_str.encode('ascii')
  *     cdef const char* uuid_cstr = uuid_bytes             # <<<<<<<<<<<<<<
  *     cdef uuid128_t uuid
- *     cdef bool_t result
+ *     cdef bool result
 */
-  __pyx_t_4 = __Pyx_PyBytes_AsString(__pyx_v_uuid_bytes); if (unlikely((!__pyx_t_4) && PyErr_Occurred())) __PYX_ERR(0, 130, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyBytes_AsString(__pyx_v_uuid_bytes); if (unlikely((!__pyx_t_4) && PyErr_Occurred())) __PYX_ERR(0, 131, __pyx_L1_error)
   __pyx_v_uuid_cstr = __pyx_t_4;
 
-  /* "python_uuidv47/_uuidv47.pyx":134
- *     cdef bool_t result
+  /* "python_uuidv47/_uuidv47.pyx":135
+ *     cdef bool result
  * 
  *     with nogil:             # <<<<<<<<<<<<<<
  *         result = uuid_parse(uuid_cstr, &uuid)
@@ -3574,7 +3564,7 @@ static __pyx_t_14python_uuidv47_8_uuidv47_bool_t __pyx_f_14python_uuidv47_8_uuid
       __Pyx_FastGIL_Remember();
       /*try:*/ {
 
-        /* "python_uuidv47/_uuidv47.pyx":135
+        /* "python_uuidv47/_uuidv47.pyx":136
  * 
  *     with nogil:
  *         result = uuid_parse(uuid_cstr, &uuid)             # <<<<<<<<<<<<<<
@@ -3584,8 +3574,8 @@ static __pyx_t_14python_uuidv47_8_uuidv47_bool_t __pyx_f_14python_uuidv47_8_uuid
         __pyx_v_result = uuid_parse(__pyx_v_uuid_cstr, (&__pyx_v_uuid));
       }
 
-      /* "python_uuidv47/_uuidv47.pyx":134
- *     cdef bool_t result
+      /* "python_uuidv47/_uuidv47.pyx":135
+ *     cdef bool result
  * 
  *     with nogil:             # <<<<<<<<<<<<<<
  *         result = uuid_parse(uuid_cstr, &uuid)
@@ -3601,7 +3591,7 @@ static __pyx_t_14python_uuidv47_8_uuidv47_bool_t __pyx_f_14python_uuidv47_8_uuid
       }
   }
 
-  /* "python_uuidv47/_uuidv47.pyx":137
+  /* "python_uuidv47/_uuidv47.pyx":138
  *         result = uuid_parse(uuid_cstr, &uuid)
  * 
  *     return result             # <<<<<<<<<<<<<<
@@ -3609,10 +3599,10 @@ static __pyx_t_14python_uuidv47_8_uuidv47_bool_t __pyx_f_14python_uuidv47_8_uuid
   __pyx_r = __pyx_v_result;
   goto __pyx_L0;
 
-  /* "python_uuidv47/_uuidv47.pyx":117
+  /* "python_uuidv47/_uuidv47.pyx":118
  *     return v7_str[:36].decode('ascii')
  * 
- * cpdef bool_t uuid_parse_py(str uuid_str):             # <<<<<<<<<<<<<<
+ * cpdef bool uuid_parse_py(str uuid_str):             # <<<<<<<<<<<<<<
  *     """Validate if a string is a properly formatted UUID.
  * 
 */
@@ -3636,7 +3626,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_14python_uuidv47_8_uuidv47_8uuid_parse_py, "uuid_parse_py(str uuid_str) -> bool_t\n\nValidate if a string is a properly formatted UUID.\n\nArgs:\n    uuid_str: String to validate\n    \nReturns:\n    True if valid UUID format, False otherwise");
+PyDoc_STRVAR(__pyx_doc_14python_uuidv47_8_uuidv47_8uuid_parse_py, "uuid_parse_py(str uuid_str) -> bool\n\nValidate if a string is a properly formatted UUID.\n\nArgs:\n    uuid_str: String to validate\n    \nReturns:\n    True if valid UUID format, False otherwise");
 static PyMethodDef __pyx_mdef_14python_uuidv47_8_uuidv47_9uuid_parse_py = {"uuid_parse_py", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_14python_uuidv47_8_uuidv47_9uuid_parse_py, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_14python_uuidv47_8_uuidv47_8uuid_parse_py};
 static PyObject *__pyx_pw_14python_uuidv47_8_uuidv47_9uuid_parse_py(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -3668,32 +3658,32 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_uuid_str,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 117, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 118, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 117, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 118, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "uuid_parse_py", 0) < 0) __PYX_ERR(0, 117, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "uuid_parse_py", 0) < 0) __PYX_ERR(0, 118, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("uuid_parse_py", 1, 1, 1, i); __PYX_ERR(0, 117, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("uuid_parse_py", 1, 1, 1, i); __PYX_ERR(0, 118, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 117, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 118, __pyx_L3_error)
     }
     __pyx_v_uuid_str = ((PyObject*)values[0]);
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("uuid_parse_py", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 117, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("uuid_parse_py", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 118, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -3704,7 +3694,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_uuid_str), (&PyUnicode_Type), 1, "uuid_str", 1))) __PYX_ERR(0, 117, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_uuid_str), (&PyUnicode_Type), 1, "uuid_str", 1))) __PYX_ERR(0, 118, __pyx_L1_error)
   __pyx_r = __pyx_pf_14python_uuidv47_8_uuidv47_8uuid_parse_py(__pyx_self, __pyx_v_uuid_str);
 
   /* function exit code */
@@ -3727,15 +3717,15 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
 static PyObject *__pyx_pf_14python_uuidv47_8_uuidv47_8uuid_parse_py(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_uuid_str) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
-  __pyx_t_14python_uuidv47_8_uuidv47_bool_t __pyx_t_1;
+  bool __pyx_t_1;
   PyObject *__pyx_t_2 = NULL;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("uuid_parse_py", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_14python_uuidv47_8_uuidv47_uuid_parse_py(__pyx_v_uuid_str, 1); if (unlikely(__pyx_t_1 == ((__pyx_t_14python_uuidv47_8_uuidv47_bool_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 117, __pyx_L1_error)
-  __pyx_t_2 = __Pyx_PyLong_From_int(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 117, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_14python_uuidv47_8_uuidv47_uuid_parse_py(__pyx_v_uuid_str, 1); if (unlikely(__pyx_t_1 == ((bool)-1) && PyErr_Occurred())) __PYX_ERR(0, 118, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyBool_FromLong(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 118, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
@@ -3797,11 +3787,11 @@ static int __Pyx_modinit_function_export_code(__pyx_mstatetype *__pyx_mstate) {
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__Pyx_modinit_function_export_code", 0);
   /*--- Function export code ---*/
-  if (__Pyx_ExportFunction("set_keys", (void (*)(void))__pyx_f_14python_uuidv47_8_uuidv47_set_keys, "__pyx_t_14python_uuidv47_8_uuidv47_bool_t (uint64_t, uint64_t, int __pyx_skip_dispatch)") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
+  if (__Pyx_ExportFunction("set_keys", (void (*)(void))__pyx_f_14python_uuidv47_8_uuidv47_set_keys, "bool (uint64_t, uint64_t, int __pyx_skip_dispatch)") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   if (__Pyx_ExportFunction("encode", (void (*)(void))__pyx_f_14python_uuidv47_8_uuidv47_encode, "PyObject *(PyObject *, int __pyx_skip_dispatch)") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   if (__Pyx_ExportFunction("decode", (void (*)(void))__pyx_f_14python_uuidv47_8_uuidv47_decode, "PyObject *(PyObject *, int __pyx_skip_dispatch)") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
-  if (__Pyx_ExportFunction("has_keys", (void (*)(void))__pyx_f_14python_uuidv47_8_uuidv47_has_keys, "__pyx_t_14python_uuidv47_8_uuidv47_bool_t (int __pyx_skip_dispatch)") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
-  if (__Pyx_ExportFunction("uuid_parse_py", (void (*)(void))__pyx_f_14python_uuidv47_8_uuidv47_uuid_parse_py, "__pyx_t_14python_uuidv47_8_uuidv47_bool_t (PyObject *, int __pyx_skip_dispatch)") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
+  if (__Pyx_ExportFunction("has_keys", (void (*)(void))__pyx_f_14python_uuidv47_8_uuidv47_has_keys, "bool (int __pyx_skip_dispatch)") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
+  if (__Pyx_ExportFunction("uuid_parse_py", (void (*)(void))__pyx_f_14python_uuidv47_8_uuidv47_uuid_parse_py, "bool (PyObject *, int __pyx_skip_dispatch)") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -4128,84 +4118,84 @@ __Pyx_RefNannySetupContext("PyInit__uuidv47", 0);
   (void)__Pyx_modinit_function_import_code(__pyx_mstate);
   /*--- Execution code ---*/
 
-  /* "python_uuidv47/_uuidv47.pyx":25
+  /* "python_uuidv47/_uuidv47.pyx":26
  * 
  * # Global state (same pattern as Node.js)
  * cdef uuidv47_key_t _global_key = uuidv47_key_t(k0=0, k1=0)             # <<<<<<<<<<<<<<
- * cdef bool_t _key_set = False
+ * cdef bool _key_set = False
  * 
 */
   __pyx_t_2.k0 = 0;
   __pyx_t_2.k1 = 0;
   __pyx_v_14python_uuidv47_8_uuidv47__global_key = __pyx_t_2;
 
-  /* "python_uuidv47/_uuidv47.pyx":26
+  /* "python_uuidv47/_uuidv47.pyx":27
  * # Global state (same pattern as Node.js)
  * cdef uuidv47_key_t _global_key = uuidv47_key_t(k0=0, k1=0)
- * cdef bool_t _key_set = False             # <<<<<<<<<<<<<<
+ * cdef bool _key_set = False             # <<<<<<<<<<<<<<
  * 
- * cpdef bool_t set_keys(uint64_t k0, uint64_t k1):
+ * cpdef bool set_keys(uint64_t k0, uint64_t k1):
 */
   __pyx_v_14python_uuidv47_8_uuidv47__key_set = 0;
 
-  /* "python_uuidv47/_uuidv47.pyx":28
- * cdef bool_t _key_set = False
+  /* "python_uuidv47/_uuidv47.pyx":29
+ * cdef bool _key_set = False
  * 
- * cpdef bool_t set_keys(uint64_t k0, uint64_t k1):             # <<<<<<<<<<<<<<
+ * cpdef bool set_keys(uint64_t k0, uint64_t k1):             # <<<<<<<<<<<<<<
  *     """Set global encryption keys for encoding/decoding operations.
  * 
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_14python_uuidv47_8_uuidv47_1set_keys, 0, __pyx_mstate_global->__pyx_n_u_set_keys, NULL, __pyx_mstate_global->__pyx_n_u_python_uuidv47__uuidv47, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[0])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 28, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_14python_uuidv47_8_uuidv47_1set_keys, 0, __pyx_mstate_global->__pyx_n_u_set_keys, NULL, __pyx_mstate_global->__pyx_n_u_python_uuidv47__uuidv47, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[0])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 29, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_set_keys, __pyx_t_3) < 0) __PYX_ERR(0, 28, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_set_keys, __pyx_t_3) < 0) __PYX_ERR(0, 29, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "python_uuidv47/_uuidv47.pyx":47
+  /* "python_uuidv47/_uuidv47.pyx":48
  *     return True
  * 
- * cpdef bool_t has_keys():             # <<<<<<<<<<<<<<
+ * cpdef bool has_keys():             # <<<<<<<<<<<<<<
  *     """Check if global encryption keys have been set.
  * 
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_14python_uuidv47_8_uuidv47_3has_keys, 0, __pyx_mstate_global->__pyx_n_u_has_keys, NULL, __pyx_mstate_global->__pyx_n_u_python_uuidv47__uuidv47, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[1])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 47, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_14python_uuidv47_8_uuidv47_3has_keys, 0, __pyx_mstate_global->__pyx_n_u_has_keys, NULL, __pyx_mstate_global->__pyx_n_u_python_uuidv47__uuidv47, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[1])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 48, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_has_keys, __pyx_t_3) < 0) __PYX_ERR(0, 47, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_has_keys, __pyx_t_3) < 0) __PYX_ERR(0, 48, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "python_uuidv47/_uuidv47.pyx":55
+  /* "python_uuidv47/_uuidv47.pyx":56
  *     return _key_set
  * 
  * cpdef str encode(str uuid_str):             # <<<<<<<<<<<<<<
  *     """Encode a UUIDv7 into a UUIDv4 facade using global keys.
  * 
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_14python_uuidv47_8_uuidv47_5encode, 0, __pyx_mstate_global->__pyx_n_u_encode, NULL, __pyx_mstate_global->__pyx_n_u_python_uuidv47__uuidv47, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[2])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 55, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_14python_uuidv47_8_uuidv47_5encode, 0, __pyx_mstate_global->__pyx_n_u_encode, NULL, __pyx_mstate_global->__pyx_n_u_python_uuidv47__uuidv47, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[2])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 56, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_encode, __pyx_t_3) < 0) __PYX_ERR(0, 55, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_encode, __pyx_t_3) < 0) __PYX_ERR(0, 56, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "python_uuidv47/_uuidv47.pyx":86
+  /* "python_uuidv47/_uuidv47.pyx":87
  *     return facade_str[:36].decode('ascii')
  * 
  * cpdef str decode(str facade_str):             # <<<<<<<<<<<<<<
  *     """Decode a UUIDv4 facade back to original UUIDv7 using global keys.
  * 
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_14python_uuidv47_8_uuidv47_7decode, 0, __pyx_mstate_global->__pyx_n_u_decode, NULL, __pyx_mstate_global->__pyx_n_u_python_uuidv47__uuidv47, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[3])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 86, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_14python_uuidv47_8_uuidv47_7decode, 0, __pyx_mstate_global->__pyx_n_u_decode, NULL, __pyx_mstate_global->__pyx_n_u_python_uuidv47__uuidv47, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[3])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 87, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_decode, __pyx_t_3) < 0) __PYX_ERR(0, 86, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_decode, __pyx_t_3) < 0) __PYX_ERR(0, 87, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "python_uuidv47/_uuidv47.pyx":117
+  /* "python_uuidv47/_uuidv47.pyx":118
  *     return v7_str[:36].decode('ascii')
  * 
- * cpdef bool_t uuid_parse_py(str uuid_str):             # <<<<<<<<<<<<<<
+ * cpdef bool uuid_parse_py(str uuid_str):             # <<<<<<<<<<<<<<
  *     """Validate if a string is a properly formatted UUID.
  * 
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_14python_uuidv47_8_uuidv47_9uuid_parse_py, 0, __pyx_mstate_global->__pyx_n_u_uuid_parse_py, NULL, __pyx_mstate_global->__pyx_n_u_python_uuidv47__uuidv47, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[4])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 117, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_14python_uuidv47_8_uuidv47_9uuid_parse_py, 0, __pyx_mstate_global->__pyx_n_u_uuid_parse_py, NULL, __pyx_mstate_global->__pyx_n_u_python_uuidv47__uuidv47, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[4])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 118, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_uuid_parse_py, __pyx_t_3) < 0) __PYX_ERR(0, 117, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_uuid_parse_py, __pyx_t_3) < 0) __PYX_ERR(0, 118, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
   /* "python_uuidv47/_uuidv47.pyx":1
@@ -4315,8 +4305,8 @@ static int __Pyx_InitStrings(__Pyx_StringTabEntry const *t, PyObject **target, c
 
 static int __Pyx_InitCachedBuiltins(__pyx_mstatetype *__pyx_mstate) {
   CYTHON_UNUSED_VAR(__pyx_mstate);
-  __pyx_builtin_RuntimeError = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_RuntimeError); if (!__pyx_builtin_RuntimeError) __PYX_ERR(0, 69, __pyx_L1_error)
-  __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(0, 79, __pyx_L1_error)
+  __pyx_builtin_RuntimeError = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_RuntimeError); if (!__pyx_builtin_RuntimeError) __PYX_ERR(0, 70, __pyx_L1_error)
+  __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(0, 80, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -4367,27 +4357,27 @@ static int __Pyx_CreateCodeObjects(__pyx_mstatetype *__pyx_mstate) {
   PyObject* tuple_dedup_map = PyDict_New();
   if (unlikely(!tuple_dedup_map)) return -1;
   {
-    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 28, 34};
+    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 29, 34};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_k0, __pyx_mstate->__pyx_n_u_k1};
-    __pyx_mstate_global->__pyx_codeobj_tab[0] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_python_uuidv47__uuidv47_pyx, __pyx_mstate->__pyx_n_u_set_keys, __pyx_k_Q_vQ_vQ_q_1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[0])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[0] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_python_uuidv47__uuidv47_pyx, __pyx_mstate->__pyx_n_u_set_keys, __pyx_k_1_vQ_vQ_q_1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[0])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {0, 0, 0, 0, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 47, 12};
+    const __Pyx_PyCode_New_function_description descr = {0, 0, 0, 0, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 48, 12};
     PyObject* const varnames[] = {0};
-    __pyx_mstate_global->__pyx_codeobj_tab[1] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_python_uuidv47__uuidv47_pyx, __pyx_mstate->__pyx_n_u_has_keys, __pyx_k_Q_1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[1])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[1] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_python_uuidv47__uuidv47_pyx, __pyx_mstate->__pyx_n_u_has_keys, __pyx_k_1_1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[1])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 55, 106};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 56, 106};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_uuid_str};
     __pyx_mstate_global->__pyx_codeobj_tab[2] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_python_uuidv47__uuidv47_pyx, __pyx_mstate->__pyx_n_u_encode, __pyx_k_t1_l_1_HG1A_4z_Qa_j_Q_1AXQ_Rs, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[2])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 86, 106};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 87, 106};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_facade_str};
     __pyx_mstate_global->__pyx_codeobj_tab[3] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_python_uuidv47__uuidv47_pyx, __pyx_mstate->__pyx_n_u_decode, __pyx_k_t1_l_1_j_q_1_4z_q_j_AXQ_1AT_6_3, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[3])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 117, 58};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 118, 58};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_uuid_str};
     __pyx_mstate_global->__pyx_codeobj_tab[4] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_python_uuidv47__uuidv47_pyx, __pyx_mstate->__pyx_n_u_uuid_parse_py, __pyx_k_t1_q_HG1A_1Kq_1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[4])) goto bad;
   }
@@ -7913,109 +7903,6 @@ raise_neg_overflow:
     return (uint64_t) -1;
 }
 
-/* PyObjectVectorCallKwBuilder */
-#if CYTHON_VECTORCALL
-static int __Pyx_VectorcallBuilder_AddArg(PyObject *key, PyObject *value, PyObject *builder, PyObject **args, int n) {
-    (void)__Pyx_PyObject_FastCallDict;
-    if (__Pyx_PyTuple_SET_ITEM(builder, n, key) != (0)) return -1;
-    Py_INCREF(key);
-    args[n] = value;
-    return 0;
-}
-CYTHON_UNUSED static int __Pyx_VectorcallBuilder_AddArg_Check(PyObject *key, PyObject *value, PyObject *builder, PyObject **args, int n) {
-    (void)__Pyx_VectorcallBuilder_AddArgStr;
-    if (unlikely(!PyUnicode_Check(key))) {
-        PyErr_SetString(PyExc_TypeError, "keywords must be strings");
-        return -1;
-    }
-    return __Pyx_VectorcallBuilder_AddArg(key, value, builder, args, n);
-}
-static int __Pyx_VectorcallBuilder_AddArgStr(const char *key, PyObject *value, PyObject *builder, PyObject **args, int n) {
-    PyObject *pyKey = PyUnicode_FromString(key);
-    if (!pyKey) return -1;
-    return __Pyx_VectorcallBuilder_AddArg(pyKey, value, builder, args, n);
-}
-#else // CYTHON_VECTORCALL
-CYTHON_UNUSED static int __Pyx_VectorcallBuilder_AddArg_Check(PyObject *key, PyObject *value, PyObject *builder, CYTHON_UNUSED PyObject **args, CYTHON_UNUSED int n) {
-    if (unlikely(!PyUnicode_Check(key))) {
-        PyErr_SetString(PyExc_TypeError, "keywords must be strings");
-        return -1;
-    }
-    return PyDict_SetItem(builder, key, value);
-}
-#endif
-
-/* CIntToPy */
-static CYTHON_INLINE PyObject* __Pyx_PyLong_From_int(int value) {
-#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wconversion"
-#endif
-    const int neg_one = (int) -1, const_zero = (int) 0;
-#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
-#pragma GCC diagnostic pop
-#endif
-    const int is_unsigned = neg_one > const_zero;
-    if (is_unsigned) {
-        if (sizeof(int) < sizeof(long)) {
-            return PyLong_FromLong((long) value);
-        } else if (sizeof(int) <= sizeof(unsigned long)) {
-            return PyLong_FromUnsignedLong((unsigned long) value);
-#if defined(HAVE_LONG_LONG) && !CYTHON_COMPILING_IN_PYPY
-        } else if (sizeof(int) <= sizeof(unsigned PY_LONG_LONG)) {
-            return PyLong_FromUnsignedLongLong((unsigned PY_LONG_LONG) value);
-#endif
-        }
-    } else {
-        if (sizeof(int) <= sizeof(long)) {
-            return PyLong_FromLong((long) value);
-#ifdef HAVE_LONG_LONG
-        } else if (sizeof(int) <= sizeof(PY_LONG_LONG)) {
-            return PyLong_FromLongLong((PY_LONG_LONG) value);
-#endif
-        }
-    }
-    {
-        unsigned char *bytes = (unsigned char *)&value;
-#if !CYTHON_COMPILING_IN_LIMITED_API && PY_VERSION_HEX >= 0x030d00A4
-        if (is_unsigned) {
-            return PyLong_FromUnsignedNativeBytes(bytes, sizeof(value), -1);
-        } else {
-            return PyLong_FromNativeBytes(bytes, sizeof(value), -1);
-        }
-#elif !CYTHON_COMPILING_IN_LIMITED_API && PY_VERSION_HEX < 0x030d0000
-        int one = 1; int little = (int)*(unsigned char *)&one;
-        return _PyLong_FromByteArray(bytes, sizeof(int),
-                                     little, !is_unsigned);
-#else
-        int one = 1; int little = (int)*(unsigned char *)&one;
-        PyObject *from_bytes, *result = NULL, *kwds = NULL;
-        PyObject *py_bytes = NULL, *order_str = NULL;
-        from_bytes = PyObject_GetAttrString((PyObject*)&PyLong_Type, "from_bytes");
-        if (!from_bytes) return NULL;
-        py_bytes = PyBytes_FromStringAndSize((char*)bytes, sizeof(int));
-        if (!py_bytes) goto limited_bad;
-        order_str = PyUnicode_FromString(little ? "little" : "big");
-        if (!order_str) goto limited_bad;
-        {
-            PyObject *args[3+(CYTHON_VECTORCALL ? 1 : 0)] = { NULL, py_bytes, order_str };
-            if (!is_unsigned) {
-                kwds = __Pyx_MakeVectorcallBuilderKwds(1);
-                if (!kwds) goto limited_bad;
-                if (__Pyx_VectorcallBuilder_AddArgStr("signed", __Pyx_NewRef(Py_True), kwds, args+3, 0) < 0) goto limited_bad;
-            }
-            result = __Pyx_Object_Vectorcall_CallFromBuilder(from_bytes, args+1, 2 | __Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET, kwds);
-        }
-        limited_bad:
-        Py_XDECREF(kwds);
-        Py_XDECREF(order_str);
-        Py_XDECREF(py_bytes);
-        Py_XDECREF(from_bytes);
-        return result;
-#endif
-    }
-}
-
 /* FormatTypeName */
 #if CYTHON_COMPILING_IN_LIMITED_API && __PYX_LIMITED_VERSION_HEX < 0x030d0000
 static __Pyx_TypeName
@@ -8052,6 +7939,38 @@ __Pyx_PyType_GetFullyQualifiedName(PyTypeObject* tp)
         result = __Pyx_NewRef(__pyx_mstate_global->__pyx_kp_u_);
     }
     goto done;
+}
+#endif
+
+/* PyObjectVectorCallKwBuilder */
+#if CYTHON_VECTORCALL
+static int __Pyx_VectorcallBuilder_AddArg(PyObject *key, PyObject *value, PyObject *builder, PyObject **args, int n) {
+    (void)__Pyx_PyObject_FastCallDict;
+    if (__Pyx_PyTuple_SET_ITEM(builder, n, key) != (0)) return -1;
+    Py_INCREF(key);
+    args[n] = value;
+    return 0;
+}
+CYTHON_UNUSED static int __Pyx_VectorcallBuilder_AddArg_Check(PyObject *key, PyObject *value, PyObject *builder, PyObject **args, int n) {
+    (void)__Pyx_VectorcallBuilder_AddArgStr;
+    if (unlikely(!PyUnicode_Check(key))) {
+        PyErr_SetString(PyExc_TypeError, "keywords must be strings");
+        return -1;
+    }
+    return __Pyx_VectorcallBuilder_AddArg(key, value, builder, args, n);
+}
+static int __Pyx_VectorcallBuilder_AddArgStr(const char *key, PyObject *value, PyObject *builder, PyObject **args, int n) {
+    PyObject *pyKey = PyUnicode_FromString(key);
+    if (!pyKey) return -1;
+    return __Pyx_VectorcallBuilder_AddArg(pyKey, value, builder, args, n);
+}
+#else // CYTHON_VECTORCALL
+CYTHON_UNUSED static int __Pyx_VectorcallBuilder_AddArg_Check(PyObject *key, PyObject *value, PyObject *builder, CYTHON_UNUSED PyObject **args, CYTHON_UNUSED int n) {
+    if (unlikely(!PyUnicode_Check(key))) {
+        PyErr_SetString(PyExc_TypeError, "keywords must be strings");
+        return -1;
+    }
+    return PyDict_SetItem(builder, key, value);
 }
 #endif
 

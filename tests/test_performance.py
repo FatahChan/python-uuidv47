@@ -16,7 +16,7 @@ class TestPerformance:
 
         # Verify result is correct
         assert len(result) == 36
-        assert uuid_parse(result) == 1  # True
+        assert uuid_parse(result) is True
 
         # Verify it's a valid facade
         decoded = decode(result)
@@ -29,14 +29,14 @@ class TestPerformance:
         # Verify result is correct
         assert result == self.test_uuid
         assert len(result) == 36
-        assert uuid_parse(result) == 1  # True
+        assert uuid_parse(result) is True
 
     def test_uuid_parse_performance(self, benchmark):
         """Benchmark UUID parsing performance"""
         result = benchmark(uuid_parse, self.test_uuid)
 
         # Verify result is correct
-        assert result == 1  # True
+        assert result is True
 
     def test_batch_encode_operations(self, benchmark):
         """Benchmark batch encoding operations"""
@@ -58,7 +58,7 @@ class TestPerformance:
         assert len(results) == 100
         for result in results:
             assert len(result) == 36
-            assert uuid_parse(result) == 1  # True
+            assert uuid_parse(result) is True
 
     def test_batch_decode_operations(self, benchmark):
         """Benchmark batch decoding operations"""
@@ -108,7 +108,7 @@ class TestPerformance:
 
         # Verify result is correct
         assert len(result) == 36
-        assert uuid_parse(result) == 1  # True
+        assert uuid_parse(result) is True
 
         # Restore original keys
         set_keys(123456789, 987654321)
@@ -136,7 +136,7 @@ class TestPerformance:
         assert len(results) == len(uuid_patterns)
         for result in results:
             assert len(result) == 36
-            assert uuid_parse(result) == 1  # True
+            assert uuid_parse(result) is True
 
     def test_memory_efficiency(self):
         """Test memory efficiency of operations"""
@@ -226,7 +226,7 @@ class TestPerformance:
 
         # Verify the operation still works correctly
         assert len(result) == 36
-        assert uuid_parse(result) == 1  # True
+        assert uuid_parse(result) is True
 
     def test_performance_comparison_baseline(self):
         """Establish performance baseline for comparison"""
