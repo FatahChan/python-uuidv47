@@ -9,37 +9,7 @@ on:
       - 'v*'
 
 jobs:
-  build_wheels:
-    name: Build wheels on ${{ matrix.os }}
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-20.04]
-
-    steps:
-    - uses: actions/checkout@v4
-
-    - name: Build wheels
-      uses: pypa/cibuildwheel@v2.16.2
-      env:
-        CIBW_BUILD: cp39-* cp310-* cp311-* cp312-*
-        CIBW_SKIP: "*-win32 *-manylinux_i686 *-musllinux_*"  # Skip 32-bit and musl
-        CIBW_BEFORE_BUILD: |
-          pip install setuptools wheel Cython>=3.0.0
-        CIBW_BUILD_VERBOSITY: 1
-        CIBW_TEST_REQUIRES: pytest pytest-benchmark uuid7
-        CIBW_TEST_COMMAND: pytest {project}/tests/test_uuidv47.py -v
-        # Platform-specific settings
-        CIBW_ENVIRONMENT_LINUX: "CC=gcc"
-        CIBW_ENVIRONMENT_MACOS: "CC=clang"
-        CIBW_ENVIRONMENT_WINDOWS: "CC=cl"
-
-    - uses: actions/upload-artifact@v4
-      with:
-        name: wheels-${{ matrix.os }}
-        path: ./wheelhouse/*.whl
-
-  build_sdist:
+  build:
     name: Build source distribution
     runs-on: ubuntu-latest
     steps:
@@ -48,7 +18,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
-        python-version: "3.11"
+        python-version: "latest"
 
     - name: Install uv
       uses: astral-sh/setup-uv@v4
@@ -58,15 +28,16 @@ jobs:
     - name: Build sdist
       run: |
         uv sync --dev
-        uv build --sdist
+        uv run python -m build
 
     - uses: actions/upload-artifact@v4
       with:
-        name: sdist
-        path: dist/*.tar.gz
+        name: python-package-distributions
+        path: dist/
+
 
   upload_pypi:
-    needs: [build_wheels, build_sdist]
+    needs: [build]
     runs-on: ubuntu-latest
     if: github.event_name == 'release' && github.event.action == 'published'
     environment:
@@ -74,20 +45,13 @@ jobs:
       url: https://pypi.org/p/python-uuidv47
     
     steps:
-    - name: Download all artifacts
+    - name: Download all the dists
       uses: actions/download-artifact@v4
       with:
-        path: dist-artifacts
+        name: python-package-distributions
+        path: dist/
 
-    - name: Collect artifacts
-      run: |
-        mkdir -p dist
-        find dist-artifacts -name "*.whl" -exec cp {} dist/ \;
-        find dist-artifacts -name "*.tar.gz" -exec cp {} dist/ \;
-        ls -la dist/
-
-    - name: Publish to PyPI
+    - name: Publish distribution 📦 to PyPI
       uses: pypa/gh-action-pypi-publish@release/v1
       with:
-        packages-dir: dist/
         password: ${{ secrets.PYPI_API_TOKEN }}

@@ -6,6 +6,9 @@
         "depends": [
             "src/python_uuidv47/uuidv47.h"
         ],
+        "extra_compile_args": [
+            "-O3"
+        ],
         "include_dirs": [
             "src/python_uuidv47"
         ],

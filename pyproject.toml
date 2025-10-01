@@ -24,11 +24,7 @@ classifiers = [
 ]
 
 [build-system]
-requires = [
-    "setuptools>=64",
-    "build",
-    "Cython>=3.0.0",
-]
+requires = ["setuptools>=64.0", "Cython>=3.0.0"]
 build-backend = "setuptools.build_meta"
 
 [dependency-groups]
@@ -37,9 +33,7 @@ dev = [
     "pytest-benchmark",
     "mypy>=1.0",
     "ruff",
-    "build",
-    "setuptools>=64",  # Required for development builds
-    "Cython>=3.0.0",  # Required for development builds
+    "build"
 ]
 
 [project.urls]

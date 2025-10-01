@@ -6,7 +6,7 @@ include setup.py
 include MANIFEST.in
 
 # Source files
-recursive-include src *.h *.c *.py
+recursive-include src *.h *.c *.py *.pyx *.pxd *.pyi
 recursive-include python_uuidv47 *.py *.pyx *.pxd *.pyi
 recursive-include build_tools *.py
 

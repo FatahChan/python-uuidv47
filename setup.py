@@ -1,21 +1,15 @@
+# setup.py
+from setuptools import setup, Extension
 from Cython.Build import cythonize
-from setuptools import Extension, setup
 
-
-def build_extension():
-    """Build the Cython extension"""
-
-    extensions = [
-        Extension(
-            "python_uuidv47._uuidv47",
-            sources=["src/python_uuidv47/_uuidv47.pyx"],
-        )
-    ]
-
-    return cythonize(
-        extensions,
-        compiler_directives={},
+extensions = [
+    Extension(
+        "python_uuidv47._uuidv47",  # Module name (matches import path)
+        ["src/python_uuidv47/_uuidv47.pyx"],
+        extra_compile_args=["-O3"],  # Optional: compiler optimizations
     )
+]
 
-
-setup(name="python_uuidv47", ext_modules=build_extension())
+setup(
+    ext_modules=cythonize(extensions, compiler_directives={'language_level': "3"}),
+)
