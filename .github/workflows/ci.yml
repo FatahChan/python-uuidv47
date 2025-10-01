@@ -101,11 +101,4 @@ jobs:
         source test-env/bin/activate || test-env\\Scripts\\activate
         uv pip install dist/*.whl
         python -c "import python_uuidv47; print('✅ Import successful!')"
-        python -c "
-import python_uuidv47 as uuidv47
-uuidv47.set_keys(0x123456789ABCDEF0, 0xFEDCBA9876543210)
-facade = uuidv47.encode('550e8400-e29b-71d4-a716-446655440000')
-original = uuidv47.decode(facade)
-print(f'✅ Functionality test passed: {original}')
-assert original == '550e8400-e29b-71d4-a716-446655440000'
-"
+        python -c "import python_uuidv47 as uuidv47; uuidv47.set_keys(0x123456789ABCDEF0, 0xFEDCBA9876543210); facade = uuidv47.encode('550e8400-e29b-71d4-a716-446655440000'); original = uuidv47.decode(facade); print(f'✅ Functionality test passed: {original}'); assert original == '550e8400-e29b-71d4-a716-446655440000'"
