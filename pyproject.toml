@@ -2,7 +2,7 @@
 
 [project]
 name = "python-uuidv47"
-version = "1.0.6"
+version = "1.0.7"
 description = "High-performance UUIDv47 operations - encoding UUIDv7 into UUIDv4 facades"
 authors = [{name = "Fatah Chan", email = "ahmadfathallah89@gmail.com"}]
 license = "MIT"
