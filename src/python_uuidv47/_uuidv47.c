@@ -4,21 +4,14 @@
 {
     "distutils": {
         "depends": [
-            "src/uuidv47.h"
-        ],
-        "extra_compile_args": [
-            "-std=c11",
-            "-O3",
-            "-ffast-math",
-            "-mmacosx-version-min=10.9"
+            "src/python_uuidv47/uuidv47.h"
         ],
         "include_dirs": [
-            "src"
+            "src/python_uuidv47"
         ],
-        "language": "c",
         "name": "python_uuidv47._uuidv47",
         "sources": [
-            "python_uuidv47/_uuidv47.pyx"
+            "src/python_uuidv47/_uuidv47.pyx"
         ]
     },
     "module_name": "python_uuidv47._uuidv47"
@@ -1353,7 +1346,7 @@ static const char *__pyx_filename;
 /* #### Code section: filename_table ### */
 
 static const char* const __pyx_f[] = {
-  "python_uuidv47/_uuidv47.pyx",
+  "src/python_uuidv47/_uuidv47.pyx",
 };
 /* #### Code section: utility_code_proto_before_types ### */
 /* Atomics.proto */
@@ -2250,8 +2243,8 @@ static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
 static const char __pyx_k_Invalid_UUID_format[] = "Invalid UUID format";
 static const char __pyx_k_Invalid_UUIDv7_format[] = "Invalid UUIDv7 format";
 static const char __pyx_k_python_uuidv47__uuidv47[] = "python_uuidv47._uuidv47";
-static const char __pyx_k_python_uuidv47__uuidv47_pyx[] = "python_uuidv47/_uuidv47.pyx";
 static const char __pyx_k_t1_l_1_HG1A_4z_Qa_j_Q_1AXQ_Rs[] = "\200\001\360\032\000\005\010\200t\2101\330\010\016\210l\230!\2301\340\004\034\230H\240G\2501\250A\330\004!\240\021\360\010\000\n\013\330\010\013\2104\210z\230\021\230+\240Q\240a\330\021\022\330\020\026\220j\240\001\240\021\340\010\021\320\021(\250\001\250\024\250Q\330\010\023\2201\220A\220X\230Q\340\004\013\210:\220R\220s\230'\240\021\240!";
+static const char __pyx_k_src_python_uuidv47__uuidv47_pyx[] = "src/python_uuidv47/_uuidv47.pyx";
 static const char __pyx_k_t1_l_1_j_q_1_4z_q_j_AXQ_1AT_6_3[] = "\200\001\360\032\000\005\010\200t\2101\330\010\016\210l\230!\2301\340\004\036\230j\250\007\250q\260\001\330\004#\2401\360\010\000\n\013\330\010\013\2104\210z\230\021\230-\240q\250\001\330\021\022\330\020\026\220j\240\001\240\021\340\010\r\320\r$\240A\240X\250Q\330\010\023\2201\220A\220T\230\021\340\004\013\2106\220\022\2203\220g\230Q\230a";
 static const char __pyx_k_Keys_not_set_Call_set_keys_first[] = "Keys not set. Call set_keys() first.";
 static const char __pyx_k_Note_that_Cython_is_deliberately[] = "Note that Cython is deliberately stricter than PEP-484 and rejects subclasses of builtin types. If you need to pass subclasses then set the 'annotation_typing' directive to False.";
@@ -2362,10 +2355,10 @@ static __pyx_mstatetype * const __pyx_mstate_global = &__pyx_mstate_global_stati
 #define __pyx_n_u_name __pyx_string_tab[20]
 #define __pyx_n_u_pop __pyx_string_tab[21]
 #define __pyx_n_u_python_uuidv47__uuidv47 __pyx_string_tab[22]
-#define __pyx_kp_u_python_uuidv47__uuidv47_pyx __pyx_string_tab[23]
-#define __pyx_n_u_qualname __pyx_string_tab[24]
-#define __pyx_n_u_set_keys __pyx_string_tab[25]
-#define __pyx_n_u_set_name __pyx_string_tab[26]
+#define __pyx_n_u_qualname __pyx_string_tab[23]
+#define __pyx_n_u_set_keys __pyx_string_tab[24]
+#define __pyx_n_u_set_name __pyx_string_tab[25]
+#define __pyx_kp_u_src_python_uuidv47__uuidv47_pyx __pyx_string_tab[26]
 #define __pyx_n_u_test __pyx_string_tab[27]
 #define __pyx_n_u_uuid_parse_py __pyx_string_tab[28]
 #define __pyx_n_u_uuid_str __pyx_string_tab[29]
@@ -2494,7 +2487,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_14python_uuidv47_8_uuidv47_set_keys, "set_keys(uint64_t k0, uint64_t k1) -> bool\n\nSet global encryption keys for encoding/decoding operations.\n\nArgs:\n    k0: First 64-bit encryption key\n    k1: Second 64-bit encryption key\n    \nReturns:\n    True if keys were set successfully\n    \nRaises:\n    OverflowError: If keys don't fit in 64-bit integers");
+PyDoc_STRVAR(__pyx_doc_14python_uuidv47_8_uuidv47_set_keys, "Set global encryption keys for encoding/decoding operations.\n    \n    Args:\n        k0: First 64-bit encryption key\n        k1: Second 64-bit encryption key\n        \n    Returns:\n        True if keys were set successfully\n        \n    Raises:\n        OverflowError: If keys don't fit in 64-bit integers\n    ");
 static PyMethodDef __pyx_mdef_14python_uuidv47_8_uuidv47_1set_keys = {"set_keys", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_14python_uuidv47_8_uuidv47_1set_keys, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_14python_uuidv47_8_uuidv47_set_keys};
 static PyObject *__pyx_pw_14python_uuidv47_8_uuidv47_1set_keys(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -2645,7 +2638,7 @@ static bool __pyx_f_14python_uuidv47_8_uuidv47_has_keys(CYTHON_UNUSED int __pyx_
 
 /* Python wrapper */
 static PyObject *__pyx_pw_14python_uuidv47_8_uuidv47_3has_keys(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-PyDoc_STRVAR(__pyx_doc_14python_uuidv47_8_uuidv47_2has_keys, "has_keys() -> bool\n\nCheck if global encryption keys have been set.\n\nReturns:\n    True if keys are set, False otherwise");
+PyDoc_STRVAR(__pyx_doc_14python_uuidv47_8_uuidv47_2has_keys, "Check if global encryption keys have been set.\n    \n    Returns:\n        True if keys are set, False otherwise\n    ");
 static PyMethodDef __pyx_mdef_14python_uuidv47_8_uuidv47_3has_keys = {"has_keys", (PyCFunction)__pyx_pw_14python_uuidv47_8_uuidv47_3has_keys, METH_NOARGS, __pyx_doc_14python_uuidv47_8_uuidv47_2has_keys};
 static PyObject *__pyx_pw_14python_uuidv47_8_uuidv47_3has_keys(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused) {
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
@@ -2958,7 +2951,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_14python_uuidv47_8_uuidv47_4encode, "encode(str uuid_str) -> str\n\nEncode a UUIDv7 into a UUIDv4 facade using global keys.\n\nArgs:\n    uuid_str: A valid UUIDv7 string to encode\n    \nReturns:\n    Encoded UUIDv4 facade string\n    \nRaises:\n    RuntimeError: If keys are not set\n    ValueError: If UUID format is invalid");
+PyDoc_STRVAR(__pyx_doc_14python_uuidv47_8_uuidv47_4encode, "Encode a UUIDv7 into a UUIDv4 facade using global keys.\n    \n    Args:\n        uuid_str: A valid UUIDv7 string to encode\n        \n    Returns:\n        Encoded UUIDv4 facade string\n        \n    Raises:\n        RuntimeError: If keys are not set\n        ValueError: If UUID format is invalid\n    ");
 static PyMethodDef __pyx_mdef_14python_uuidv47_8_uuidv47_5encode = {"encode", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_14python_uuidv47_8_uuidv47_5encode, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_14python_uuidv47_8_uuidv47_4encode};
 static PyObject *__pyx_pw_14python_uuidv47_8_uuidv47_5encode(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -3342,7 +3335,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_14python_uuidv47_8_uuidv47_6decode, "decode(str facade_str) -> str\n\nDecode a UUIDv4 facade back to original UUIDv7 using global keys.\n\nArgs:\n    facade_str: A valid UUID facade string to decode\n    \nReturns:\n    Original UUIDv7 string\n    \nRaises:\n    RuntimeError: If keys are not set\n    ValueError: If facade format is invalid");
+PyDoc_STRVAR(__pyx_doc_14python_uuidv47_8_uuidv47_6decode, "Decode a UUIDv4 facade back to original UUIDv7 using global keys.\n    \n    Args:\n        facade_str: A valid UUID facade string to decode\n        \n    Returns:\n        Original UUIDv7 string\n        \n    Raises:\n        RuntimeError: If keys are not set\n        ValueError: If facade format is invalid\n    ");
 static PyMethodDef __pyx_mdef_14python_uuidv47_8_uuidv47_7decode = {"decode", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_14python_uuidv47_8_uuidv47_7decode, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_14python_uuidv47_8_uuidv47_6decode};
 static PyObject *__pyx_pw_14python_uuidv47_8_uuidv47_7decode(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -3626,7 +3619,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_14python_uuidv47_8_uuidv47_8uuid_parse_py, "uuid_parse_py(str uuid_str) -> bool\n\nValidate if a string is a properly formatted UUID.\n\nArgs:\n    uuid_str: String to validate\n    \nReturns:\n    True if valid UUID format, False otherwise");
+PyDoc_STRVAR(__pyx_doc_14python_uuidv47_8_uuidv47_8uuid_parse_py, "Validate if a string is a properly formatted UUID.\n    \n    Args:\n        uuid_str: String to validate\n        \n    Returns:\n        True if valid UUID format, False otherwise\n    ");
 static PyMethodDef __pyx_mdef_14python_uuidv47_8_uuidv47_9uuid_parse_py = {"uuid_parse_py", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_14python_uuidv47_8_uuidv47_9uuid_parse_py, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_14python_uuidv47_8_uuidv47_8uuid_parse_py};
 static PyObject *__pyx_pw_14python_uuidv47_8_uuidv47_9uuid_parse_py(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -4289,10 +4282,10 @@ static const __Pyx_StringTabEntry __pyx_string_tab[] = {
   {__pyx_k_name, sizeof(__pyx_k_name), 0, 1, 1}, /* PyObject cname: __pyx_n_u_name */
   {__pyx_k_pop, sizeof(__pyx_k_pop), 0, 1, 1}, /* PyObject cname: __pyx_n_u_pop */
   {__pyx_k_python_uuidv47__uuidv47, sizeof(__pyx_k_python_uuidv47__uuidv47), 0, 1, 1}, /* PyObject cname: __pyx_n_u_python_uuidv47__uuidv47 */
-  {__pyx_k_python_uuidv47__uuidv47_pyx, sizeof(__pyx_k_python_uuidv47__uuidv47_pyx), 0, 1, 0}, /* PyObject cname: __pyx_kp_u_python_uuidv47__uuidv47_pyx */
   {__pyx_k_qualname, sizeof(__pyx_k_qualname), 0, 1, 1}, /* PyObject cname: __pyx_n_u_qualname */
   {__pyx_k_set_keys, sizeof(__pyx_k_set_keys), 0, 1, 1}, /* PyObject cname: __pyx_n_u_set_keys */
   {__pyx_k_set_name, sizeof(__pyx_k_set_name), 0, 1, 1}, /* PyObject cname: __pyx_n_u_set_name */
+  {__pyx_k_src_python_uuidv47__uuidv47_pyx, sizeof(__pyx_k_src_python_uuidv47__uuidv47_pyx), 0, 1, 0}, /* PyObject cname: __pyx_kp_u_src_python_uuidv47__uuidv47_pyx */
   {__pyx_k_test, sizeof(__pyx_k_test), 0, 1, 1}, /* PyObject cname: __pyx_n_u_test */
   {__pyx_k_uuid_parse_py, sizeof(__pyx_k_uuid_parse_py), 0, 1, 1}, /* PyObject cname: __pyx_n_u_uuid_parse_py */
   {__pyx_k_uuid_str, sizeof(__pyx_k_uuid_str), 0, 1, 1}, /* PyObject cname: __pyx_n_u_uuid_str */
@@ -4359,27 +4352,27 @@ static int __Pyx_CreateCodeObjects(__pyx_mstatetype *__pyx_mstate) {
   {
     const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 29, 34};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_k0, __pyx_mstate->__pyx_n_u_k1};
-    __pyx_mstate_global->__pyx_codeobj_tab[0] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_python_uuidv47__uuidv47_pyx, __pyx_mstate->__pyx_n_u_set_keys, __pyx_k_1_vQ_vQ_q_1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[0])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[0] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_python_uuidv47__uuidv47_pyx, __pyx_mstate->__pyx_n_u_set_keys, __pyx_k_1_vQ_vQ_q_1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[0])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {0, 0, 0, 0, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 48, 12};
     PyObject* const varnames[] = {0};
-    __pyx_mstate_global->__pyx_codeobj_tab[1] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_python_uuidv47__uuidv47_pyx, __pyx_mstate->__pyx_n_u_has_keys, __pyx_k_1_1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[1])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[1] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_python_uuidv47__uuidv47_pyx, __pyx_mstate->__pyx_n_u_has_keys, __pyx_k_1_1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[1])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 56, 106};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_uuid_str};
-    __pyx_mstate_global->__pyx_codeobj_tab[2] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_python_uuidv47__uuidv47_pyx, __pyx_mstate->__pyx_n_u_encode, __pyx_k_t1_l_1_HG1A_4z_Qa_j_Q_1AXQ_Rs, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[2])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[2] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_python_uuidv47__uuidv47_pyx, __pyx_mstate->__pyx_n_u_encode, __pyx_k_t1_l_1_HG1A_4z_Qa_j_Q_1AXQ_Rs, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[2])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 87, 106};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_facade_str};
-    __pyx_mstate_global->__pyx_codeobj_tab[3] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_python_uuidv47__uuidv47_pyx, __pyx_mstate->__pyx_n_u_decode, __pyx_k_t1_l_1_j_q_1_4z_q_j_AXQ_1AT_6_3, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[3])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[3] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_python_uuidv47__uuidv47_pyx, __pyx_mstate->__pyx_n_u_decode, __pyx_k_t1_l_1_j_q_1_4z_q_j_AXQ_1AT_6_3, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[3])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 118, 58};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_uuid_str};
-    __pyx_mstate_global->__pyx_codeobj_tab[4] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_python_uuidv47__uuidv47_pyx, __pyx_mstate->__pyx_n_u_uuid_parse_py, __pyx_k_t1_q_HG1A_1Kq_1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[4])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[4] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_python_uuidv47__uuidv47_pyx, __pyx_mstate->__pyx_n_u_uuid_parse_py, __pyx_k_t1_q_HG1A_1Kq_1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[4])) goto bad;
   }
   Py_DECREF(tuple_dedup_map);
   return 0;

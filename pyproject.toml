@@ -1,10 +1,4 @@
-[build-system]
-requires = [
-    "setuptools>=64",
-    "wheel",
-    "Cython>=3.0.0",
-]
-build-backend = "setuptools.build_meta"
+
 
 [project]
 name = "python-uuidv47"
@@ -17,7 +11,6 @@ requires-python = ">=3.9"
 keywords = ["uuid", "uuidv7", "uuidv47", "cryptography", "performance"]
 
 classifiers = [
-    "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.9",
@@ -30,7 +23,13 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 
-dependencies = []
+[build-system]
+requires = [
+    "setuptools>=64",
+    "build",
+    "Cython>=3.0.0",
+]
+build-backend = "setuptools.build_meta"
 
 [dependency-groups]
 dev = [
@@ -38,9 +37,7 @@ dev = [
     "pytest-benchmark",
     "mypy>=1.0",
     "ruff",
-    "uuid7",  # For testing
     "build",
-    "wheel",
     "setuptools>=64",  # Required for development builds
     "Cython>=3.0.0",  # Required for development builds
 ]
@@ -51,11 +48,11 @@ Repository = "https://github.com/FatahChan/python-uuidv47.git"
 Issues = "https://github.com/FatahChan/python-uuidv47/issues"
 
 [tool.setuptools.packages.find]
-where = ["."]
-include = ["python_uuidv47*"]
+where = ["src"]
+include = ["src/python_uuidv47*"]
 
 [tool.setuptools.package-data]
-python_uuidv47 = ["py.typed", "*.pyi"]
+python_uuidv47 = ["*.pyi"]
 
 [tool.ruff]
 line-length = 88
