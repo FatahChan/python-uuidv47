@@ -26,6 +26,7 @@ jobs:
         CIBW_SKIP: "*-win32 *-manylinux_i686 *-musllinux_*"  # Skip 32-bit and musl
         CIBW_BEFORE_BUILD: |
           pip install uv
+          uv venv
           uv sync --dev
         CIBW_BUILD_VERBOSITY: 1
         CIBW_TEST_REQUIRES: pytest pytest-benchmark
