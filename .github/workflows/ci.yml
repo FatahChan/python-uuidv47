@@ -8,6 +8,7 @@ on:
 
 jobs:
   test:
+    name: Test Python ${{ matrix.python-version }} on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -27,10 +28,8 @@ jobs:
       with:
         version: "latest"
     
-    - name: Install dependencies and build
+    - name: Install dependencies and build extension
       run: |
-        # Install build dependencies first to avoid circular dependency
-        uv pip install setuptools wheel Cython>=3.0.0
         uv sync --dev
         uv run python setup.py build_ext --inplace
     
@@ -43,7 +42,9 @@ jobs:
         uv run pytest tests/test_performance.py --benchmark-only --benchmark-sort=name
 
   lint:
+    name: Lint and Type Check
     runs-on: ubuntu-latest
+    
     steps:
     - uses: actions/checkout@v4
     
@@ -57,21 +58,23 @@ jobs:
       with:
         version: "latest"
     
-    - name: Install linting tools
+    - name: Install dependencies
       run: |
-        uv add --dev ruff mypy
+        uv sync --dev
     
-    - name: Lint and format check
+    - name: Lint with ruff
       run: |
         uv run ruff check .
         uv run ruff format --check .
     
-    - name: Type checking
+    - name: Type check with mypy
       run: |
-        uv run mypy python_uuidv47/ --ignore-missing-imports
+        uv run mypy python_uuidv47/
 
   build-test:
+    name: Test Build and Installation
     runs-on: ubuntu-latest
+    
     steps:
     - uses: actions/checkout@v4
     
@@ -85,18 +88,24 @@ jobs:
       with:
         version: "latest"
     
-    - name: Test build process
+    - name: Build package
       run: |
-        uv venv
-        # Install build dependencies first to avoid circular dependency
-        uv pip install setuptools wheel Cython>=3.0.0
         uv sync --dev
-        # Build Cython extension first
         uv run python setup.py build_ext --inplace
-        # Then build the wheel
         uv build
         
     - name: Test wheel installation
       run: |
+        # Create fresh environment for testing wheel
+        uv venv test-env
+        source test-env/bin/activate || test-env\\Scripts\\activate
         uv pip install dist/*.whl
-        python -c "import python_uuidv47; print('Import successful!')"
+        python -c "import python_uuidv47; print('✅ Import successful!')"
+        python -c "
+import python_uuidv47 as uuidv47
+uuidv47.set_keys(0x123456789ABCDEF0, 0xFEDCBA9876543210)
+facade = uuidv47.encode('550e8400-e29b-71d4-a716-446655440000')
+original = uuidv47.decode(facade)
+print(f'✅ Functionality test passed: {original}')
+assert original == '550e8400-e29b-71d4-a716-446655440000'
+"
