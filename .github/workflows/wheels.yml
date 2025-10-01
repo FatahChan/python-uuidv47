@@ -25,11 +25,9 @@ jobs:
         CIBW_BUILD: cp39-* cp310-* cp311-* cp312-*
         CIBW_SKIP: "*-win32 *-manylinux_i686 *-musllinux_*"  # Skip 32-bit and musl
         CIBW_BEFORE_BUILD: |
-          pip install uv
-          uv venv
-          uv sync --dev
+          pip install setuptools wheel Cython>=3.0.0
         CIBW_BUILD_VERBOSITY: 1
-        CIBW_TEST_REQUIRES: pytest pytest-benchmark
+        CIBW_TEST_REQUIRES: pytest pytest-benchmark uuid7
         CIBW_TEST_COMMAND: pytest {project}/tests/test_uuidv47.py -v
         # Platform-specific settings
         CIBW_ENVIRONMENT_LINUX: "CC=gcc"

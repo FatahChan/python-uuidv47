@@ -85,8 +85,10 @@ jobs:
     
     - name: Test build process
       run: |
-        uv venv
         uv sync --dev
+        # Build Cython extension first
+        uv run python setup.py build_ext --inplace
+        # Then build the wheel
         uv build
         
     - name: Test wheel installation
