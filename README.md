@@ -1,7 +1,7 @@
 # python-uuidv47
 
 [![CI](https://github.com/FatahChan/python-uuidv47/workflows/CI/badge.svg)](https://github.com/FatahChan/python-uuidv47/actions)
-[![PyPI version](https://badge.fury.io/py/python-uuidv47.svg)](https://badge.fury.io/py/python-uuidv47)
+[![PyPI version](https://img.shields.io/pypi/v/python-uuidv47.svg)](https://pypi.org/project/python-uuidv47/)
 [![Python versions](https://img.shields.io/pypi/pyversions/python-uuidv47.svg)](https://pypi.org/project/python-uuidv47/)
 
 High-performance Python library for UUIDv47 operations - encoding UUIDv7 into UUIDv4 facades and decoding them back. Uses the same C implementation.
@@ -216,17 +216,17 @@ except ValueError as e:
 git clone https://github.com/FatahChan/python-uuidv47.git
 cd python-uuidv47
 
-# Install development dependencies
-uv sync --extra dev
-
-# Build the extension
-uv run python setup.py build_ext --inplace
+# Install development dependencies and build the package
+uv sync --dev
 
 # Run tests
 uv run pytest tests/ -v
 
 # Run benchmarks
 uv run pytest tests/test_performance.py --benchmark-only
+
+# Build source distribution
+uv run python -m build --sdist
 ```
 
 ### Code Quality
