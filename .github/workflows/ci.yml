@@ -87,6 +87,7 @@ jobs:
     
     - name: Test build process
       run: |
+        uv venv
         # Install build dependencies first to avoid circular dependency
         uv pip install setuptools wheel Cython>=3.0.0
         uv sync --dev
