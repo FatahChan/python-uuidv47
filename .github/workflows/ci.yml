@@ -85,6 +85,7 @@ jobs:
     
     - name: Test build process
       run: |
+        uv venv
         uv build
         
     - name: Test wheel installation
