@@ -71,8 +71,6 @@ jobs:
     environment:
       name: pypi
       url: https://pypi.org/p/python-uuidv47
-    permissions:
-      id-token: write  # For trusted publishing
     
     steps:
     - name: Download all artifacts
@@ -91,32 +89,5 @@ jobs:
       uses: pypa/gh-action-pypi-publish@release/v1
       with:
         packages-dir: dist/
+        password: ${{ secrets.PYPI_API_TOKEN }}
 
-  upload_test_pypi:
-    needs: [build_wheels, build_sdist]
-    runs-on: ubuntu-latest
-    if: github.event_name == 'workflow_dispatch'
-    environment:
-      name: testpypi
-      url: https://test.pypi.org/p/python-uuidv47
-    permissions:
-      id-token: write  # For trusted publishing
-    
-    steps:
-    - name: Download all artifacts
-      uses: actions/download-artifact@v3
-      with:
-        path: dist-artifacts
-
-    - name: Collect artifacts
-      run: |
-        mkdir -p dist
-        find dist-artifacts -name "*.whl" -exec cp {} dist/ \;
-        find dist-artifacts -name "*.tar.gz" -exec cp {} dist/ \;
-        ls -la dist/
-
-    - name: Publish to Test PyPI
-      uses: pypa/gh-action-pypi-publish@release/v1
-      with:
-        repository-url: https://test.pypi.org/legacy/
-        packages-dir: dist/
