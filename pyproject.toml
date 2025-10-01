@@ -2,7 +2,7 @@
 
 [project]
 name = "python-uuidv47"
-version = "1.0.0"
+version = "1.0.6"
 description = "High-performance UUIDv47 operations - encoding UUIDv7 into UUIDv4 facades"
 authors = [{name = "Fatah Chan", email = "ahmadfathallah89@gmail.com"}]
 license = "MIT"
@@ -43,7 +43,7 @@ Issues = "https://github.com/FatahChan/python-uuidv47/issues"
 
 [tool.setuptools.packages.find]
 where = ["src"]
-include = ["src/python_uuidv47*"]
+include = ["python_uuidv47*"]
 
 [tool.setuptools.package-data]
 python_uuidv47 = ["*.pyi"]
