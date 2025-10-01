@@ -29,6 +29,8 @@ jobs:
     
     - name: Install dependencies and build
       run: |
+        # Install build dependencies first to avoid circular dependency
+        uv pip install setuptools wheel Cython>=3.0.0
         uv sync --dev
         uv run python setup.py build_ext --inplace
     
@@ -85,6 +87,8 @@ jobs:
     
     - name: Test build process
       run: |
+        # Install build dependencies first to avoid circular dependency
+        uv pip install setuptools wheel Cython>=3.0.0
         uv sync --dev
         # Build Cython extension first
         uv run python setup.py build_ext --inplace

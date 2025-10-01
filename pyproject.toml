@@ -42,6 +42,7 @@ dev = [
     "uuid7",  # For testing
     "build",
     "wheel",
+    "setuptools>=64",  # Required for development builds
     "Cython>=3.0.0",  # Required for development builds
 ]
 
