@@ -4,7 +4,7 @@
 [![PyPI version](https://badge.fury.io/py/python-uuidv47.svg)](https://badge.fury.io/py/python-uuidv47)
 [![Python versions](https://img.shields.io/pypi/pyversions/python-uuidv47.svg)](https://pypi.org/project/python-uuidv47/)
 
-High-performance Python library for UUIDv47 operations - encoding UUIDv7 into UUIDv4 facades and decoding them back. Uses the same C implementation as the Node.js version for maximum performance and cross-language compatibility.
+High-performance Python library for UUIDv47 operations - encoding UUIDv7 into UUIDv4 facades and decoding them back. Uses the same C implementation.
 
 ## What is UUIDv47?
 
@@ -42,6 +42,11 @@ assert original_uuid == decoded  # Perfect roundtrip!
 ### From PyPI (Recommended)
 
 ```bash
+uv add python-uuidv47
+```
+
+Or with pip:
+```bash
 pip install python-uuidv47
 ```
 
@@ -50,7 +55,7 @@ pip install python-uuidv47
 ```bash
 git clone https://github.com/FatahChan/python-uuidv47.git
 cd python-uuidv47
-pip install .
+uv sync
 ```
 
 ## API Reference
@@ -201,6 +206,7 @@ except ValueError as e:
 ### Requirements
 
 - Python 3.9+
+- [uv](https://docs.astral.sh/uv/) (recommended) or pip
 - Cython 3.0+
 - C11 compatible compiler
 
@@ -211,22 +217,23 @@ git clone https://github.com/FatahChan/python-uuidv47.git
 cd python-uuidv47
 
 # Install development dependencies
-pip install -e ".[dev]"
+uv sync --extra dev
 
 # Build the extension
-python setup.py build_ext --inplace
+uv run python setup.py build_ext --inplace
 
 # Run tests
-pytest tests/ -v
+uv run pytest tests/ -v
 
 # Run benchmarks
-pytest tests/test_performance.py --benchmark-only
+uv run pytest tests/test_performance.py --benchmark-only
 ```
 
 ### Code Quality
 
 This project uses modern Python tooling:
 
+- **uv** for fast Python package management
 - **Ruff** for linting and formatting
 - **mypy** for type checking
 - **pytest** for testing with benchmarks
@@ -234,13 +241,13 @@ This project uses modern Python tooling:
 
 ```bash
 # Format code
-ruff format .
+uv run ruff format .
 
 # Lint code
-ruff check .
+uv run ruff check .
 
 # Type check
-mypy python_uuidv47/ --ignore-missing-imports
+uv run mypy python_uuidv47/
 ```
 
 ## Contributing
@@ -259,8 +266,8 @@ MIT License - see [LICENSE](LICENSE) file for details.
 
 ## Related Projects
 
-- [node-uuidv47](https://github.com/stateless-me/uuidv47) - Node.js implementation
-- [UUIDv7 Draft](https://datatracker.ietf.org/doc/draft-peabody-dispatch-new-uuid-format/) - UUIDv7 specification
+- [uuidv47](https://github.com/stateless-me/uuidv47) - Original uuid47 in C
+- [node-uuid47](https://github.com/sh1kxrv/node_uuidv47) uuid47 in Node.
 
 ## Changelog
 
