@@ -29,8 +29,6 @@ jobs:
     
     - name: Install dependencies and build
       run: |
-        # Install Cython first to avoid build issues
-        uv add Cython>=3.0.0
         uv sync --dev
         uv run python setup.py build_ext --inplace
     
@@ -87,8 +85,6 @@ jobs:
     
     - name: Test build process
       run: |
-        # Install Cython first to avoid build issues
-        uv add Cython>=3.0.0
         uv sync --dev
         # Build Cython extension first
         uv run python setup.py build_ext --inplace
