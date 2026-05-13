@@ -16,7 +16,7 @@ jobs:
     - uses: actions/checkout@v4
 
     - name: Set up Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
         python-version: "3.11"
 
@@ -32,25 +32,69 @@ jobs:
 
     - uses: actions/upload-artifact@v4
       with:
-        name: python-package-distributions
+        name: cibw-sdist
         path: dist/*.tar.gz
 
+  build_wheels:
+    name: Build wheels (${{ matrix.os }})
+    runs-on: ${{ matrix.runs-on }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: linux
+            runs-on: ubuntu-latest
+          - os: windows
+            runs-on: windows-latest
+          - os: macos-intel
+            runs-on: macos-15-intel
+          - os: macos-arm
+            runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Build wheels
+      uses: pypa/cibuildwheel@v3.4.1
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: cibw-wheels-${{ matrix.os }}
+        path: ./wheelhouse/*.whl
+
+  verify_wheel_install:
+    name: Verify Linux wheel before PyPI
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.11"
+
+    - name: Build manylinux wheel and test prebuilt install
+      run: bash scripts/verify_wheel_install.sh
+      env:
+        CIBW_BUILD: cp311-manylinux_x86_64
+
   upload_pypi:
-    needs: [build_sdist]
+    needs: [build_sdist, build_wheels, verify_wheel_install]
     runs-on: ubuntu-latest
     if: github.event_name == 'release' && github.event.action == 'published'
     environment:
       name: pypi
       url: https://pypi.org/p/python-uuidv47
-    
+
     steps:
-    - name: Download all artifacts
+    - name: Download distributions
       uses: actions/download-artifact@v4
       with:
-        name: python-package-distributions
-        path: dist/
+        pattern: cibw-*
+        path: dist
+        merge-multiple: true
 
-    - name: Publish distribution 📦 to PyPI
+    - name: Publish distribution to PyPI
       uses: pypa/gh-action-pypi-publish@release/v1
       with:
         password: ${{ secrets.PYPI_API_TOKEN }}

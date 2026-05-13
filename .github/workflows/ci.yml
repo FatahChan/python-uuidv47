@@ -4,7 +4,6 @@ on:
   push:
     branches: [ main ]
   pull_request:
-    branches: [ main ]
 
 jobs:
   test:
@@ -39,7 +38,12 @@ jobs:
     - name: Test source distribution build
       run: |
         uv run python -m build --sdist
-        
+
+    - name: Build manylinux wheel and test prebuilt install
+      run: bash scripts/verify_wheel_install.sh
+      env:
+        CIBW_BUILD: cp311-manylinux_x86_64
+
     - name: Test installation from source
       run: |
         # Test that the source distribution can be installed

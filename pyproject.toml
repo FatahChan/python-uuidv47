@@ -80,4 +80,7 @@ strict = true
 warn_return_any = true
 warn_unused_configs = true
 
+[tool.cibuildwheel]
+# Match Trove classifiers (CPython 3.9–3.12 only)
+build = "cp39-* cp310-* cp311-* cp312-*"
 
